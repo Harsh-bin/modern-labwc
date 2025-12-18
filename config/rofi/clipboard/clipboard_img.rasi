@@ -1,0 +1,85 @@
+/*****----- Configuration -----*****/
+configuration {
+	show-icons: 		true;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+* {
+    border-radius:               14px;
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    northeast;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       500px;
+    x-offset:                    -100px;
+    y-offset:                    5px;
+    enabled:                     true;
+    cursor:                      "default";
+    border:                      1px;
+    border-color:                @selected;
+    background-color:            @background;
+    padding:                     15px;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "listview" ];
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     2;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     15px; 
+    margin: 			         0px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    padding:                     12px; 
+    cursor:                      pointer;
+    orientation:                 vertical;
+    horizontal-align:            0.5;
+    background-color:            @background-alt;
+}
+
+element.selected  {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-icon {
+    size:                         120px; 
+    background-color:             transparent;
+    horizontal-align:             0.5;
+    border-radius:                8px;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  transparent;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}

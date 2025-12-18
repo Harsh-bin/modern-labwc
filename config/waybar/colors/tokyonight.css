@@ -1,0 +1,11 @@
+@define-color bar_bg #15161e;
+@define-color bar_fg #c0caf5;
+@define-color module_bg #1a1b26;
+@define-color module_fg @bar_fg;
+@define-color hover_bg #33467c;
+@define-color hover_fg #c0caf5;
+@define-color border_color @hover_bg;
+@define-color launcher @hover_bg;
+@define-color special #414868;
+@define-color special_fg #c0caf5;
+@define-color power #f7768e;

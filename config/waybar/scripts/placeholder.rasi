@@ -1,0 +1,62 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 false;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       350px;
+    background-color:            @background;
+    border:                      1px;
+    border-color:                @selected;
+    border-radius:               8px;
+    padding: 			 15px;
+    children:                    [ "message", "inputbar" ];
+}
+
+
+/*****----- Message Text -----*****/
+message {
+    padding:                     0px 0px 10px 0px; 
+    margin:                      0px;
+    background-color:            inherit;
+    border:                      0px;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    markup:                      true;
+}
+
+/*****----- Input Bar -----*****/
+inputbar {
+    enabled:                     true;
+    padding:                     0px;
+    margin:                      0px;
+    background-color:            transparent;
+    border:                      0px;     
+    children:                    [ "entry" ];
+}
+
+entry {
+    background-color:            @background-alt; 
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "  Enter Value btw (0.0 - 1.0)"  ;
+    placeholder-color:           inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    border:                      1px;
+    border-radius:               8px;
+    border-color:                @foreground;
+    padding:                     10px;
+}

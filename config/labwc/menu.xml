@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu >
+    <menu id="root-menu" label="Applications">
+        <menu id="Editors" label="Editors" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-development-web.svg">
+            <item label="Sublime Text" icon="/usr/share/icons/Papirus-Dark/48x48/categories/sublime-text.svg">
+                <action name="Execute">
+                    <command>/opt/sublime_text/sublime_text</command>
+                </action>
+            </item>
+            <item label="Visual Studio Code" icon="/usr/share/pixmaps/visual-studio-code.png">
+                <action name="Execute">
+                    <command>/usr/bin/code</command>
+                </action>
+            </item>
+            <item label="Visual Studio Code - URL Handler" icon="/usr/share/pixmaps/visual-studio-code.png">
+                <action name="Execute">
+                    <command>/usr/bin/code --open-url</command>
+                </action>
+            </item>
+        </menu> <!-- Editors -->
+        <menu id="Graphics" label="Graphics" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-graphics.svg">
+            <item label="GThumb" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.gnome.gThumb.svg">
+                <action name="Execute">
+                    <command>gthumb</command>
+                </action>
+            </item>
+            <item label="Import With GThumb" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.gnome.gThumb.svg">
+                <action name="Execute">
+                    <command>gthumb --import-photos</command>
+                </action>
+            </item>
+            <item label="Inkscape" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.inkscape.Inkscape.svg">
+                <action name="Execute">
+                    <command>inkscape</command>
+                </action>
+            </item>
+            <item label="XnView Multi Platform" icon="/opt/xnviewmp/xnview.png">
+                <action name="Execute">
+                    <command>/usr/bin/xnviewmp</command>
+                </action>
+            </item>
+        </menu> <!-- Graphics -->
+        <menu id="Internet" label="Internet" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-internet.svg">
+            <item label="64Gram Desktop" icon="/usr/share/pixmaps/64gram.png">
+                <action name="Execute">
+                    <command>64gram-desktop --</command>
+                </action>
+            </item>
+            <item label="Avahi SSH Server Browser" icon="/usr/share/icons/Papirus-Dark/48x48/devices/network-wired.svg">
+                <action name="Execute">
+                    <command>/usr/bin/bssh</command>
+                </action>
+            </item>
+            <item label="Avahi VNC Server Browser" icon="/usr/share/icons/Papirus-Dark/48x48/devices/network-wired.svg">
+                <action name="Execute">
+                    <command>/usr/bin/bvnc</command>
+                </action>
+            </item>
+            <item label="Chromium" icon="/usr/share/icons/Papirus-Dark/48x48/categories/chromium.svg">
+                <action name="Execute">
+                    <command>/usr/bin/chromium</command>
+                </action>
+            </item>
+            <item label="Google Chrome" icon="/usr/share/icons/Papirus-Dark/48x48/categories/google-chrome.svg">
+                <action name="Execute">
+                    <command>/usr/bin/google-chrome-stable</command>
+                </action>
+            </item>
+            <item label="Google Chrome" icon="/usr/share/icons/Papirus-Dark/48x48/categories/google-chrome.svg">
+                <action name="Execute">
+                    <command>/usr/bin/google-chrome-stable</command>
+                </action>
+            </item>
+            <item label="Helium Browser" icon="/usr/share/pixmaps/helium-browser.png">
+                <action name="Execute">
+                    <command>helium-browser</command>
+                </action>
+            </item>
+            <item label="Proton VPN" icon="/usr/share/icons/Papirus-Dark/48x48/categories/proton-vpn-logo.svg">
+                <action name="Execute">
+                    <command>protonvpn-app</command>
+                </action>
+            </item>
+            <item label="UGet" icon="/usr/share/icons/Papirus-Dark/48x48/categories/uget-icon.svg">
+                <action name="Execute">
+                    <command>uget-gtk</command>
+                </action>
+            </item>
+            <item label="Xtreme Download Manager" icon="/opt/xdman/xdm-logo.svg">
+                <action name="Execute">
+                    <command>env GTK_USE_PORTAL=1 /opt/xdman/xdm-app</command>
+                </action>
+            </item>
+        </menu> <!-- Internet -->
+        <menu id="Multimedia" label="Multimedia" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-multimedia.svg">
+            <item label="G4Music" icon="/usr/share/icons/Papirus-Dark/48x48/categories/com.github.neithern.g4music.svg">
+                <action name="Execute">
+                    <command>g4music</command>
+                </action>
+            </item>
+            <item label="Mpv Media Player" icon="/usr/share/icons/Papirus-Dark/48x48/categories/mpv.svg">
+                <action name="Execute">
+                    <command>mpv --player-operation-mode=pseudo-gui --</command>
+                </action>
+            </item>
+            <item label="Qt V4L2 Test Utility" icon="/usr/share/icons/Papirus-Dark/48x48/categories/qv4l2.svg">
+                <action name="Execute">
+                    <command>qv4l2</command>
+                </action>
+            </item>
+            <item label="Qt V4L2 Video Capture Utility" icon="/usr/share/icons/Papirus-Dark/48x48/categories/qvidcap.svg">
+                <action name="Execute">
+                    <command>qvidcap</command>
+                </action>
+            </item>
+            <item label="Spotify" icon="/usr/share/pixmaps/spotify-client.png">
+                <action name="Execute">
+                    <command>spotify --uri=</command>
+                </action>
+            </item>
+            <item label="Spotify (adblock)" icon="/usr/share/pixmaps/spotify-client.png">
+                <action name="Execute">
+                    <command>env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --uri=</command>
+                </action>
+            </item>
+            <item label="VLC Media Player" icon="/usr/share/icons/Papirus-Dark/48x48/categories/vlc.svg">
+                <action name="Execute">
+                    <command>/usr/bin/vlc --started-from-file</command>
+                </action>
+            </item>
+            <item label="Volume Control" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.pulseaudio.pavucontrol.svg">
+                <action name="Execute">
+                    <command>pavucontrol</command>
+                </action>
+            </item>
+        </menu> <!-- Multimedia -->
+        <menu id="Other" label="Other" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-other.svg">
+            <item label="PolicyKit Authentication Agent">
+                <action name="Execute">
+                    <command>/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1</command>
+                </action>
+            </item>
+        </menu> <!-- Other -->
+        <menu id="Settings" label="Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-desktop-online-accounts.svg">
+            <item label="About Me" icon="/usr/share/icons/Papirus-Dark/48x48/categories/mugshot.svg">
+                <action name="Execute">
+                    <command>/usr/bin/mugshot</command>
+                </action>
+            </item>
+            <item label="Advanced Network Configuration" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-system-network.svg">
+                <action name="Execute">
+                    <command>nm-connection-editor</command>
+                </action>
+            </item>
+            <item label="ARandR" icon="/usr/share/icons/Papirus-Dark/48x48/categories/display.svg">
+                <action name="Execute">
+                    <command>arandr</command>
+                </action>
+            </item>
+            <item label="Arch Linux Tweak Tool" icon="/usr/share/icons/hicolor/scalable/apps/archlinux-tweak-tool.svg">
+                <action name="Execute">
+                    <command>/usr/bin/archlinux-tweak-tool</command>
+                </action>
+            </item>
+            <item label="Arcolinux Desktop Trasher" icon="/usr/share/icons/hicolor/scalable/apps/arcolinux-desktop-trasher.svg">
+                <action name="Execute">
+                    <command>/usr/local/bin/arcolinux-desktop-trasher</command>
+                </action>
+            </item>
+            <item label="ArcoLinux Welcome" icon="/usr/share/icons/Papirus-Dark/48x48/categories/arcolinux-hello.svg">
+                <action name="Execute">
+                    <command>/usr/local/bin/arcolinux-welcome-app</command>
+                </action>
+            </item>
+            <item label="Desktop" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.xfdesktop.svg">
+                <action name="Execute">
+                    <command>xfdesktop-settings</command>
+                </action>
+            </item>
+            <item label="Notifications" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.notification.svg">
+                <action name="Execute">
+                    <command>xfce4-notifyd-config</command>
+                </action>
+            </item>
+            <item label="Onboard Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/onboard.svg">
+                <action name="Execute">
+                    <command>onboard-settings</command>
+                </action>
+            </item>
+            <item label="Panel" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.panel.svg">
+                <action name="Execute">
+                    <command>xfce4-panel --preferences</command>
+                </action>
+            </item>
+            <item label="Privilege Granting">
+                <action name="Execute">
+                    <command>gksu-properties</command>
+                </action>
+            </item>
+            <item label="Qt5 Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-desktop-theme.svg">
+                <action name="Execute">
+                    <command>qt5ct</command>
+                </action>
+            </item>
+            <item label="Qt6 Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-desktop-theme.svg">
+                <action name="Execute">
+                    <command>qt6ct</command>
+                </action>
+            </item>
+            <item label="Session And Startup" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.session.svg">
+                <action name="Execute">
+                    <command>xfce4-session-settings</command>
+                </action>
+            </item>
+            <item label="Sofirem - Software Installer/remover For Arch Linux Based Systems" icon="/usr/share/icons/hicolor/scalable/apps/sofirem.svg">
+                <action name="Execute">
+                    <command>/usr/bin/sofirem</command>
+                </action>
+            </item>
+            <item label="Text Editor Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.mousepad.svg">
+                <action name="Execute">
+                    <command>mousepad --preferences</command>
+                </action>
+            </item>
+            <item label="Thunar Preferences" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.thunar.svg">
+                <action name="Execute">
+                    <command>thunar-settings</command>
+                </action>
+            </item>
+            <item label="Volume Control" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.pulseaudio.pavucontrol.svg">
+                <action name="Execute">
+                    <command>pavucontrol</command>
+                </action>
+            </item>
+            <item label="Window Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.xfwm4.svg">
+                <action name="Execute">
+                    <command>xfwm4-settings</command>
+                </action>
+            </item>
+            <item label="Window Manager Tweaks" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.xfwm4-tweaks.svg">
+                <action name="Execute">
+                    <command>xfwm4-tweaks-settings</command>
+                </action>
+            </item>
+            <item label="Workspaces" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.workspaces.svg">
+                <action name="Execute">
+                    <command>xfwm4-workspace-settings</command>
+                </action>
+            </item>
+            <item label="Xfce Terminal Settings" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.terminal-settings.svg">
+                <action name="Execute">
+                    <command>xfce4-terminal --preferences</command>
+                </action>
+            </item>
+        </menu> <!-- Settings -->
+        <menu id="System" label="System" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-system.svg">
+            <item label="Alacritty" icon="/usr/share/pixmaps/Alacritty.svg">
+                <action name="Execute">
+                    <command>alacritty</command>
+                </action>
+            </item>
+            <item label="Avahi Zeroconf Browser" icon="/usr/share/icons/Papirus-Dark/48x48/devices/network-wired.svg">
+                <action name="Execute">
+                    <command>/usr/bin/avahi-discover</command>
+                </action>
+            </item>
+            <item label="Btop++" icon="/usr/share/icons/Papirus-Dark/48x48/categories/btop.svg">
+                <action name="Execute">
+                    <command>foot btop</command>
+                </action>
+            </item>
+            <item label="Foot" icon="/usr/share/icons/Papirus-Dark/48x48/categories/foot.svg">
+                <action name="Execute">
+                    <command>foot</command>
+                </action>
+            </item>
+            <item label="Foot Client" icon="/usr/share/icons/Papirus-Dark/48x48/categories/foot.svg">
+                <action name="Execute">
+                    <command>footclient</command>
+                </action>
+            </item>
+            <item label="Foot Server" icon="/usr/share/icons/Papirus-Dark/48x48/categories/foot.svg">
+                <action name="Execute">
+                    <command>foot --server</command>
+                </action>
+            </item>
+            <item label="Hardware Locality Lstopo" icon="/usr/share/icons/Papirus-Dark/48x48/categories/hwloc.svg">
+                <action name="Execute">
+                    <command>lstopo</command>
+                </action>
+            </item>
+            <item label="Kitty" icon="/usr/share/pixmaps/kitty.png">
+                <action name="Execute">
+                    <command>kitty</command>
+                </action>
+            </item>
+            <item label="Kitty URL Launcher" icon="/usr/share/pixmaps/kitty.png">
+                <action name="Execute">
+                    <command>kitty +open</command>
+                </action>
+            </item>
+            <item label="Log Out" icon="/usr/share/icons/Papirus-Dark/48x48/categories/xfsm-logout.svg">
+                <action name="Execute">
+                    <command>xfce4-session-logout</command>
+                </action>
+            </item>
+            <item label="Systemd Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/preferences-system.svg">
+                <action name="Execute">
+                    <command>systemd-manager-pkexec</command>
+                </action>
+            </item>
+            <item label="Task Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.taskmanager.svg">
+                <action name="Execute">
+                    <command>xfce4-taskmanager</command>
+                </action>
+            </item>
+            <item label="Terminal" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.gnome.Terminal.svg">
+                <action name="Execute">
+                    <command>gnome-terminal</command>
+                </action>
+            </item>
+            <item label="Terminal Preferences" icon="/usr/share/icons/hicolor/scalable/apps/org.gnome.Terminal.Preferences.svg">
+                <action name="Execute">
+                    <command>gnome-terminal --preferences</command>
+                </action>
+            </item>
+            <item label="Termite" icon="/usr/share/icons/Papirus-Dark/48x48/categories/utilities-terminal.svg">
+                <action name="Execute">
+                    <command>termite</command>
+                </action>
+            </item>
+            <item label="Thunar File Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.thunar.svg">
+                <action name="Execute">
+                    <command>thunar</command>
+                </action>
+            </item>
+            <item label="Xfce Terminal" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.terminal.svg">
+                <action name="Execute">
+                    <command>xfce4-terminal</command>
+                </action>
+            </item>
+            <item label="Xwayland">
+                <action name="Execute">
+                    <command>/usr/bin/Xwayland -decorate -displayfd 1</command>
+                </action>
+            </item>
+        </menu> <!-- System -->
+        <menu id="Utilities" label="Utilities" icon="/usr/share/icons/Papirus-Dark/48x48/categories/applications-utilities.svg">
+            <item label="About Xfce" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.about.svg">
+                <action name="Execute">
+                    <command>xfce4-about</command>
+                </action>
+            </item>
+            <item label="Arch Linux Tweak Tool" icon="/usr/share/icons/hicolor/scalable/apps/archlinux-tweak-tool.svg">
+                <action name="Execute">
+                    <command>/usr/bin/archlinux-tweak-tool</command>
+                </action>
+            </item>
+            <item label="Ark" icon="/usr/share/icons/Papirus-Dark/48x48/categories/x.svg">
+                <action name="Execute">
+                    <command>ark</command>
+                </action>
+            </item>
+            <item label="Bulk Rename" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.thunar.svg">
+                <action name="Execute">
+                    <command>thunar --bulk-rename</command>
+                </action>
+            </item>
+            <item label="Galculator" icon="/usr/share/pixmaps/galculator.xpm">
+                <action name="Execute">
+                    <command>galculator</command>
+                </action>
+            </item>
+            <item label="Gammastep" icon="/usr/share/icons/Papirus-Dark/48x48/categories/gammastep.svg">
+                <action name="Execute">
+                    <command>foot gammastep</command>
+                </action>
+            </item>
+            <item label="Gammastep Indicator" icon="/usr/share/icons/Papirus-Dark/48x48/categories/gammastep.svg">
+                <action name="Execute">
+                    <command>gammastep-indicator</command>
+                </action>
+            </item>
+            <item label="LocalSend" icon="/usr/share/icons/hicolor/128x128/apps/localsend.png">
+                <action name="Execute">
+                    <command>localsend</command>
+                </action>
+            </item>
+            <item label="Mousepad" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.mousepad.svg">
+                <action name="Execute">
+                    <command>mousepad</command>
+                </action>
+            </item>
+            <item label="Onboard" icon="/usr/share/icons/Papirus-Dark/48x48/categories/onboard.svg">
+                <action name="Execute">
+                    <command>onboard</command>
+                </action>
+            </item>
+            <item label="Passwords And Keys" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.gnome.seahorse.Application.svg">
+                <action name="Execute">
+                    <command>seahorse</command>
+                </action>
+            </item>
+            <item label="Pinentry" icon="/usr/share/pixmaps/pinentry.png">
+                <action name="Execute">
+                    <command>/usr/bin/pinentry-qt5</command>
+                </action>
+            </item>
+            <item label="Pinentry" icon="/usr/share/pixmaps/pinentry.png">
+                <action name="Execute">
+                    <command>/usr/bin/pinentry-qt</command>
+                </action>
+            </item>
+            <item label="Redshift" icon="/usr/share/icons/Papirus-Dark/48x48/categories/redshift.svg">
+                <action name="Execute">
+                    <command>redshift-gtk</command>
+                </action>
+            </item>
+            <item label="Redshift" icon="/usr/share/icons/Papirus-Dark/48x48/categories/redshift.svg">
+                <action name="Execute">
+                    <command>foot redshift</command>
+                </action>
+            </item>
+            <item label="Scrcpy" icon="/usr/share/icons/hicolor/256x256/apps/scrcpy.png">
+                <action name="Execute">
+                    <command>/bin/sh -c &quot;\\$SHELL -i -c scrcpy&quot;</command>
+                </action>
+            </item>
+            <item label="Scrcpy (console)" icon="/usr/share/icons/hicolor/256x256/apps/scrcpy.png">
+                <action name="Execute">
+                    <command>foot /bin/sh -c &quot;\\$SHELL -i -c &apos;scrcpy --pause-on-exit=if-error&apos;&quot;</command>
+                </action>
+            </item>
+            <item label="Sofirem - Software Installer/remover For Arch Linux Based Systems" icon="/usr/share/icons/hicolor/scalable/apps/sofirem.svg">
+                <action name="Execute">
+                    <command>/usr/bin/sofirem</command>
+                </action>
+            </item>
+            <item label="Software Token" icon="/usr/share/pixmaps/stoken-gui.png">
+                <action name="Execute">
+                    <command>stoken-gui</command>
+                </action>
+            </item>
+            <item label="Software Token (small)" icon="/usr/share/pixmaps/stoken-gui.png">
+                <action name="Execute">
+                    <command>stoken-gui --small</command>
+                </action>
+            </item>
+            <item label="Stacer" icon="/usr/share/icons/Papirus-Dark/48x48/categories/stacer.svg">
+                <action name="Execute">
+                    <command>stacer</command>
+                </action>
+            </item>
+            <item label="Task Manager" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.xfce.taskmanager.svg">
+                <action name="Execute">
+                    <command>xfce4-taskmanager</command>
+                </action>
+            </item>
+            <item label="Terminal" icon="/usr/share/icons/Papirus-Dark/48x48/categories/org.gnome.Terminal.svg">
+                <action name="Execute">
+                    <command>gnome-terminal</command>
+                </action>
+            </item>
+            <item label="Visual Studio Code - URL Handler" icon="/usr/share/pixmaps/visual-studio-code.png">
+                <action name="Execute">
+                    <command>/usr/bin/code --open-url</command>
+                </action>
+            </item>
+            <item label="Xarchiver" icon="/usr/share/icons/Papirus-Dark/48x48/categories/xarchiver.svg">
+                <action name="Execute">
+                    <command>xarchiver</command>
+                </action>
+            </item>
+            <item label="Xgps" icon="/usr/share/gpsd/icons/gpsd-logo.png">
+                <action name="Execute">
+                    <command>xgps</command>
+                </action>
+            </item>
+            <item label="Xgpsspeed" icon="/usr/share/gpsd/icons/gpsd-logo.png">
+                <action name="Execute">
+                    <command>xgpsspeed</command>
+                </action>
+            </item>
+        </menu> <!-- Utilities -->
+        <separator />
+        <item label="Terminal" icon="/usr/share/icons/Papirus/48x48/apps/terminal.svg">
+            <action name="Execute">
+                <command>foot</command>
+            </action>
+        </item>
+        <item label="Reconfigure" icon="/usr/share/icons/Tela/32/status/system-reboot.svg">
+            <action name="Reconfigure">
+            </action>
+        </item>
+        <item label="Proton VPN" icon="/usr/share/icons/Papirus/48x48/apps/proton-vpn-logo.svg">
+            <action name="Execute">
+                <command>protonvpn-app</command>
+            </action>
+        </item>
+        <item label="Background" icon="/usr/share/icons/Papirus/48x48/apps/preferences-desktop-wallpaper.svg">
+            <action name="Execute">
+                <command>sh -c &apos;/home/init_harsh/.config/rofi/wallselect/wallselect.sh&apos;</command>
+            </action>
+        </item>
+        <item label="Exit" icon="/usr/share/icons/Tela/32/status/system-log-out.svg">
+            <action name="Exit">
+            </action>
+        </item>
+    </menu>
+</openbox_menu>

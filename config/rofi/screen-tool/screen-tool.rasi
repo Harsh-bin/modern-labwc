@@ -1,0 +1,79 @@
+/*****----- Configuration -----*****/
+configuration {
+	show-icons:                 false;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       400px;
+    border-radius:               8px;
+    border:                      1px;
+    border-color:                @selected;
+    padding:                     10px;
+    background-color:            @background;
+    children:                    [ "mainbox" ];
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    background-color:            transparent;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Message -----*****/
+message {
+    padding:                     10px;
+    background-color:            inherit;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    markup:                      true;
+}
+
+/*****----- Listview -----*****/
+listview {
+    columns:                     2;
+    lines:                       1;
+    cycle:                       true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    spacing:                     8px;
+    padding:                     20px;
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+/*****----- Elements -----*****/
+element {
+    padding:                     10px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element-text {
+    background-color:            inherit;
+    text-color:                  inherit;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}
+
+element selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+inputbar {
+    enabled: false;
+}

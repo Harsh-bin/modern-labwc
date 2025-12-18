@@ -1,0 +1,276 @@
+  /////////////////////////////////
+  //                             //
+  //  // Waybar configuration//  //
+  //                             //
+  /////////////////////////////////
+
+  {
+      "layer": "top",
+      "position": "top",
+      "height": 38,
+      "spacing": 0,
+      "margin-top": 0,
+      "margin-bottom": 0,
+      "reload_style_on_change": true,
+
+      /////////////////////////////////////////////
+      //                                         //
+      //  // Choose the order of the modules //  //
+      //                                         //
+      /////////////////////////////////////////////
+
+      "modules-left": ["custom/launcher", "custom/chrome", "custom/terminal", "custom/code", "custom/music", "custom/thunar", "custom/todo"],
+      "modules-center": ["wlr/taskbar"],
+      "modules-right": ["keyboard-state", "custom/countdown", "memory", "group/group-tools", "pulseaudio", "backlight", "network", "tray", "clock", "custom/power"],
+
+
+//// Waybar Modules Configuration
+
+
+
+      "wlr/taskbar":
+      {
+          "format": "{icon}",
+          "icon-size": 22,
+          "icon-theme": "Papirus",
+          "tooltip-format": "{title:.50}",
+          "on-click": "minimize-raise",
+          "on-click-middle": "close",
+          "on-click-right": "fullscreen"
+      },
+
+      "keyboard-state":
+      {
+          "capslock": true,
+          "format": "{icon}",
+          "format-icons":
+          {
+              "locked": " Caps ",
+              "unlocked": ""
+          }
+      },
+
+      "idle_inhibitor":
+      {
+          "format": "{icon}",
+          "format-icons":
+          {
+              "activated": "",
+              "deactivated": ""
+          }
+      },
+
+      "tray":
+      {
+          "icon-size": 20,
+          "spacing": 10,
+          "show-passive-items": true
+      },
+
+      "clock":
+      {
+          "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+          "format-alt": "{:%d-%m-%Y}",
+          "format": "{:%I:%M %p}"
+      },
+
+      "backlight":
+      {
+          "device": "acpi_video0", // Assuming acpi_video0, adjust if needed
+          "tooltip": true,
+          "tooltip-format": "Nightlight",
+          "format": "{percent}% {icon}",
+          "format-icons": ["", ""],
+          "on-scroll-up": "brightnessctl s +5%",
+          "on-scroll-down": "brightnessctl s 5%-",
+          "on-click": "killall rofi || bash ~/.config/rofi/nightlight/night-light.sh"
+      },
+
+      "pulseaudio":
+      {
+          "format": "{volume}% {icon}",
+          "tooltip": true,
+          "tooltip-format": "Nowplaying",
+          "format-bluetooth": "{volume}% {icon}",
+          "format-bluetooth-muted": "{icon} {format_source}",
+          "format-muted": " {format_source}",
+          "format-source": "",
+          "format-source-muted": "",
+          "format-icons":
+          {
+              "headphone": "",
+              "hands-free": "",
+              "headset": "",
+              "phone": "",
+              "portable": "",
+              "car": "",
+              "default": ["", "", ""]
+          },
+          "on-click": "killall rofi || bash ~/.config/rofi/nowplaying/nowplaying.sh 2>/dev/null",
+          "on-click-right": "pavucontrol",
+          "on-click-middle": "bash ~/.config/waybar/scripts/mute.sh 2>/dev/null"
+      },
+
+      "memory":
+      {
+          "interval": 30,
+          "format": "<big>󰍛</big>\u00a0\u00a0{percentage}%",
+          "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G\nPercentage: {percentage}% used\nAvailable: {avail}G\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
+          "on-click": "xfce4-taskmanager"
+      },
+
+
+      "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "󱛅 ",
+        "format-disabled": "󱚼 ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "  {essid} ({signalStrength}%)\nIP: {ipaddr}\nFreq: 5GHz",
+        "tooltip-format-ethernet": "  {ifname}\nIP: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+        "on-click": "killall rofi || bash ~/.config/rofi/wifi/wifi.sh"
+      },
+
+//// Custom Module {frequency}
+
+
+      "custom/todo":
+      {
+          "format": "\u00a0{}",
+          "exec": "~/.config/waybar/scripts/todo/todo.sh",
+          "on-double-click": "~/.config/waybar/scripts/todo/todo.sh mark_done",
+          "on-click-right": "~/.config/waybar/scripts/todo/todo.sh open_tui",
+          "on-click-middle": "~/.config/waybar/scripts/todo/todo.sh middle_click",
+          "return-type": "json",
+          "interval": 5,
+          "tooltip": true
+      },
+
+      "custom/countdown":
+      {
+          "exec": "~/.config/waybar/scripts/countdown/countdown.sh",
+          "return-type": "json",
+          "format": "{}",
+          "interval": 3600,
+          "on-click-right": "foot bash ~/.config/waybar/scripts/countdown/countdown.sh interactive",
+          "on-scroll-up": "~/.config/waybar/scripts/countdown/countdown.sh scroll-up",
+          "on-scroll-down": "~/.config/waybar/scripts/countdown/countdown.sh scroll-down"
+      },
+
+
+
+//// Apps section 
+
+      "custom/launcher":
+      {
+          "format": "<big></big>",
+          "tooltip": true,
+          "tooltip-format": "Menu\nRight click to change theme",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/launchers/launcher.sh 2>/dev/null",
+          "on-click-right": "killall rofi 2>/dev/null || bash ~/.config/waybar/scripts/customize.sh 2>/dev/null"
+      },
+
+      "custom/chrome":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Browser",
+          "on-click": "google-chrome-stable",
+          "on-click-right": "chromium",
+          "on-click-middle": "brave"
+      },
+
+      "custom/terminal":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Terminal",
+          "on-click": "xfce4-terminal",
+          "on-click-right": "foot"
+      },
+
+      "custom/code":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Code Editor",
+          "on-click": "/opt/sublime_text/sublime_text"
+      },
+
+      "custom/music":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Music",
+          "on-click": "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --uri=%U >/dev/null 2>&1 &",
+          "on-click-right": "g4music"
+      },
+
+      "custom/thunar":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "File Manager",
+          "on-click": "thunar"
+      },
+
+
+//// Tools Section
+       
+
+      "group/group-tools":
+      {
+          "orientation": "inherit",
+          "drawer":
+          {
+              "transition-duration": 500,
+              "children-class": "other-apps",
+              "transition-left-to-right": false
+          },
+          "modules": [
+              "custom/clip",
+              "custom/snip",
+              "idle_inhibitor",
+              "custom/theme-switcher"
+          ]
+      },
+
+      "custom/clip":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Clipboard",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/clipboard/clipboard.sh 2>/dev/null"
+      },
+      
+      "custom/theme-switcher":
+      {
+          "format": "<big>󰔎 </big>",
+          "tooltip": true,
+          "tooltip-format": "Light/Dark",
+          "on-click": "bash ~/.config/waybar/scripts/toggle-theme.sh 2>/dev/null"
+      },
+            
+      "custom/snip":
+      {
+          "format": "",
+          "tooltip": true,
+          "tooltip-format": "Screenshot",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/screen-tool/screen-tool.sh 2>/dev/null"
+      },
+
+
+//// Powermenu
+
+
+      "custom/power":
+      {
+          "format": "<b></b>",
+          "tooltip": true,
+          "tooltip-format": "Powermenu",
+          "on-click": "killall rofi 2>/dev/null || bash ~/.config/rofi/powermenu/powermenu.sh 2>/dev/null"
+      }
+  }

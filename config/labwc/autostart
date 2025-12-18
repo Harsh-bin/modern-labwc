@@ -1,0 +1,42 @@
+# Desktop Login sound
+paplay ~/.config/labwc/sound/desktop-login.oga >/dev/null 2>&1 &
+
+# Device plugged audio
+bash ~/.config/labwc/device-monitor.sh >/dev/null 2>&1 &
+
+# Set background 
+swww-daemon >/dev/null 2>&1 &
+
+# Keyring
+/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh >/dev/null 2>&1 &
+
+# Polkit 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >/dev/null 2>&1 &
+
+# Gtk Theme Refresh
+bash ~/.config/labwc/gtk.sh >/dev/null 2>&1 &
+
+# Clipboard
+wl-clip-persist --clipboard regular &
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
+
+# Waybar
+(sleep 0.5; waybar --log-level off >/dev/null 2>&1 &)
+
+# API
+(sleep 0.5; python3 /home/init_harsh/scripts/tab/d-tab/api.py >/dev/null 2>&1 &)
+(sleep 0.5; python3 /home/init_harsh/scripts/tab/clean-tab/api-clean.py >/dev/null 2>&1 &)
+
+# Notification 
+dunst >/dev/null 2>&1 &
+
+# Idle device manager
+swayidle -w \
+    lock 'sh -c ~/.config/labwc/idle/lock_ctrl.sh' \
+    timeout 300 '(~/.config/labwc/idle/brightness_ctrl.sh --fade-out)' \
+    resume '(~/.config/labwc/idle/brightness_ctrl.sh --fade-in)' \
+    timeout 600 'loginctl lock-session' \
+    before-sleep 'sh -c ~/.config/labwc/idle/sleep_ctrl.sh' \
+    after-resume '(~/.config/labwc/idle/brightness_ctrl.sh --fade-in)' > "$HOME/.config/labwc/idle/idle.log" &
+

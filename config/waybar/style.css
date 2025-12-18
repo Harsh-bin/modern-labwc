@@ -1,0 +1,17 @@
+/** Main waybar css **/
+
+
+/** just to triggre css refresh **/
+
+
+/** Imports a color scheme from colors directory **/
+@import "colors/wallpaper.css";
+
+/** Imports a layout (style) for bar **/
+@import "layouts/pill.css";
+
+
+/** Sets bar background transparency **/
+window#waybar {
+    background: alpha(@bar_bg, 0);
+}

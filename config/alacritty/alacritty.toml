@@ -1,0 +1,62 @@
+[window]
+opacity = 1.0
+
+padding = { x = 4, y = 4 }
+
+[scrolling]
+history = 2000
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "JetBrainsMono NF"
+style = "Bold"
+
+[font.bold]
+family = "JetBrainsMono NF"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono NF"
+style = "Italic" 
+
+[bell]
+duration = 0 
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+
+[colors]
+
+[colors.primary]
+background = "#f8f9ff"
+foreground = "#191c20"
+
+[colors.cursor]
+text   = "#f8f9ff"
+cursor = "#35618e"
+
+[colors.selection]
+text       = "#d8dae0"
+background = "#35618e"
+
+[colors.normal]
+black   = "#42474e"
+red     = "#ba1a1a"
+green   = "#35618e"
+yellow  = "#6b5778"
+blue    = "#001d36"
+magenta = "#101c2b"
+cyan    = "#535f70"
+white   = "#191c20"
+
+[colors.bright]
+black   = "#42474e"
+red     = "#ba1a1a"
+green   = "#35618e"
+yellow  = "#6b5778"
+blue    = "#001d36"
+magenta = "#101c2b"
+cyan    = "#535f70"
+white   = "#191c20"

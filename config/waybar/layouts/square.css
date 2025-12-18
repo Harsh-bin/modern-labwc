@@ -1,0 +1,166 @@
+/* Layout: Square */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Font Awesome 5 Free", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @bar_bg;
+    color: @bar_fg;
+}
+
+tooltip {
+    background-color: @bar_bg;
+    border: 1px solid @border_color;
+    border-radius: 0px;
+}
+tooltip label {
+    color: @bar_fg;
+}
+
+/* --- Modules: Base --- */
+#clock,
+#network,
+#custom-chrome,
+#custom-terminal,
+#custom-code,
+#custom-music,
+#custom-thunar,
+#custom-todo,
+#custom-countdown,
+#backlight,
+#pulseaudio,
+#memory,
+#custom-clip,
+#custom-snip,
+#custom-taskmanager,
+#custom-theme-switcher,
+#tray,
+#idle_inhibitor,
+#custom-power,
+#custom-launcher {
+    background: @module_bg;
+    color: @module_fg;
+    padding: 3px 13px;
+    margin: 2px 0px 2px 0px;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+}
+
+#custom-chrome,
+#custom-terminal,
+#custom-code,
+#custom-music,
+#custom-thunar,
+#custom-clip,
+#custom-snip,
+#idle_inhibitor,
+#custom-theme-switcher {
+     margin: 2px 0px 2px 0px;
+}
+
+#custom-power,
+#custom-todo,
+#custom-chrome{
+    margin-left: 2px;
+}
+
+#custom-countdown {
+    margin-right: 2px;
+}
+#tray {
+    background: @special;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#custom-launcher {
+    color: @launcher;
+}
+
+
+#custom-power {
+    background: @module_bg;
+    color: @power;
+}
+#keyboard-state {
+    background: transparent;
+}
+
+#keyboard-state label.locked {
+    background: @special;
+    color: @module_fg; 
+    padding: 0px 12px;
+    margin: 2px;
+    border-radius: 0px;
+}
+#network.disconnected,
+#network.disabled {
+    color: @power; 
+}
+
+/* --- Hover Effects --- */
+#clock:hover,
+#network:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#memory:hover,
+#custom-clip:hover,
+#custom-snip:hover,
+#custom-taskmanager:hover,
+#custom-theme-switcher:hover,
+#idle_inhibitor:hover,
+#custom-chrome:hover,
+#custom-terminal:hover,
+#custom-code:hover,
+#custom-music:hover,
+#custom-thunar:hover {
+    background: @hover_bg;
+    color: @hover_fg;
+}
+
+#custom-launcher:hover {
+    background: @hover_bg;
+    color: @hover_fg;
+}
+
+#custom-todo:hover,
+#custom-countdown:hover {
+    background: @special;
+    color: @special_fg;
+}
+
+
+#custom-power:hover {
+    background: @power;
+    color: @bar_bg;
+}
+
+/* --- Taskbar --- */
+#taskbar {
+    background: @module_bg;
+    padding: 0 5px;
+    margin: 2px 0px 2px 0px;
+}
+
+#taskbar button {
+    padding: 0 8px;
+    background: transparent;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#taskbar button.active {
+    background: alpha(@hover_bg, 0.25);
+    border-bottom-color: @hover_bg;
+}
+
+#taskbar button:hover {
+    background: alpha(@hover_bg, 0.15);
+    border-bottom-color: alpha(@hover_bg, 0.65);
+}
+

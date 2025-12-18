@@ -1,0 +1,148 @@
+/* Layout: compact-pill */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Font Awesome 5 Free", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @bar_bg;
+    color: @bar_fg;
+}
+
+tooltip {
+    background-color: @bar_bg;
+    border: 1px solid @border_color;
+    border-radius: 12px;
+}
+tooltip label {
+    color: @bar_fg;
+}
+
+/* --- Modules: Base --- */
+#clock,
+#network,
+#custom-chrome,
+#custom-terminal,
+#custom-code,
+#custom-music,
+#custom-thunar,
+#custom-todo,
+#custom-countdown,
+#backlight,
+#pulseaudio,
+#memory,
+#custom-clip,
+#custom-snip,
+#custom-taskmanager,
+#custom-theme-switcher,
+#tray,
+#idle_inhibitor,
+#custom-power,
+#custom-launcher {
+    background: @module_bg;
+    color: @module_fg;
+    padding: 3px 13px;
+    margin: 4px 0px 4px 0px;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+}
+
+
+#custom-launcher {
+    color: @launcher;
+    margin-left: 2px;
+    border-radius: 99px 0px 0px 99px;
+}
+#custom-countdown {
+    border-radius: 99px 0px 0px 99px;
+}
+#custom-todo {
+    border-radius: 0px 99px 99px 0px;
+}
+#custom-power {
+    background: @module_bg;
+    color: @power;
+    margin-right: 2px;
+    border-radius: 0px 99px 99px 0px;
+}
+#tray {
+    background: @special;
+}
+#keyboard-state {
+    background: transparent;
+}
+#keyboard-state label.locked {
+    background: @special;
+    color: @module_fg; 
+    padding: 0px 12px;
+    margin: 4px 4px 4px 0px;	
+    border-radius: 99px;
+}
+#network.disconnected,
+#network.disabled {
+    color: @power; 
+}
+
+/* --- Hover Effects --- */
+#clock:hover,
+#network:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#memory:hover,
+#custom-clip:hover,
+#custom-snip:hover,
+#custom-taskmanager:hover,
+#custom-theme-switcher:hover,
+#idle_inhibitor:hover,
+#custom-chrome:hover,
+#custom-terminal:hover,
+#custom-code:hover,
+#custom-music:hover,
+#custom-thunar:hover {
+    background: @hover_bg;
+    color: @hover_fg;
+}
+
+#custom-launcher:hover {
+    background: @hover_bg;
+    color: @hover_fg;
+}
+
+#custom-todo:hover,
+#custom-countdown:hover {
+    background: @special;
+    color: @special_fg;
+}
+
+
+#custom-power:hover {
+    background: @power;
+    color: @bar_bg;
+}
+
+/* --- Taskbar --- */
+#taskbar {
+    background: @module_bg;
+    margin: 4px;
+    padding: 2px;
+    border-radius: 99px;
+}
+
+#taskbar button {
+    padding: 0 8px;
+    border: 1px solid transparent;
+    border-radius: 99px;
+    transition: background 0.3s ease;
+}
+
+#taskbar button.active {
+    background: alpha(@hover_bg, 0.25);
+}
+
+#taskbar button:hover {
+    background: alpha(@hover_bg, 0.15);
+}

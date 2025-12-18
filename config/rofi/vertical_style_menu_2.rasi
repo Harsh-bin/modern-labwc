@@ -1,0 +1,86 @@
+/*****----- Configuration -----*****/
+configuration {
+	show-icons:                 false;
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       300px;
+    border-radius:               8px;
+    border:                      1px;
+    border-color:                @selected;
+    padding:                     10px;
+    background-color:            @background;
+    children:                    [ "mainbox" ];
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    background-color:            transparent;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Message -----*****/
+message {
+    padding:                     10px;
+    background-color:            inherit;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.5; 
+    markup:                      true;
+}
+
+/*****----- Listview -----*****/
+listview {
+    columns:                     1;
+    lines:                       6;
+    cycle:                       true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    spacing:                     8px;
+    padding:                     20px;
+    border-radius:               8px;    
+    background-color:            @background-alt;
+    scrollbar:                   true;
+}
+
+scrollbar {
+    handle-width:                3px ;
+    handle-color:                @foreground;
+    background-color:            @background-alt;
+}
+
+/*****----- Elements -----*****/
+element {
+    padding:                     10px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element-text {
+    background-color:            inherit;
+    text-color:                  inherit;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}
+
+element selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+inputbar {
+    enabled: false;
+}

@@ -1,0 +1,128 @@
+/******--- configuration --*****/
+
+configuration {
+    show-icons:                 false;
+}
+
+@import "~/.config/rofi/shared/colors.rasi"
+@import "~/.config/rofi/shared/fonts.rasi" 
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    northeast;
+    anchor:                      center;
+    fullscreen:                  false;   
+    width:                       500px;
+    height:                      360px;
+    x-offset:                    -40px;
+    y-offset:                    5px;
+    enabled:                     true;
+    cursor:                      "default";
+    background-color:            @background; 
+    border:                      1px;
+    border-color:                @selected;
+    border-radius:               8px;
+    padding:                     20px;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     20px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "top-message", "middle-wrapper", "listview" ];
+}
+
+top-message {
+    enabled:                     true;
+    padding:                     0px;
+    background-color:            @background;
+    children:                    [ "textbox-msg" ];
+    expand:                      false;
+}
+
+textbox-msg {
+    expand: true;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    str:                         "  Now Playing"; 
+    font:                        "JetBrains Mono Bold 16";
+}
+
+middle-wrapper {
+    enabled:                     true;
+    orientation:                 horizontal;
+    spacing:                     20px;
+    background-color:            transparent;
+    expand:                      true; 
+    children:                    [ "album-art", "custom-text-box" ];
+}
+
+album-art {
+    enabled:                     true;
+    width:                       170px; 
+    height:                      170px; 
+    background-color:            @background-alt;
+    background-image:            url("~/.config/rofi/nowplaying/album_art.png", height);
+    border-radius:               12px;
+    expand:                      false; 
+}
+
+custom-text-box {
+    enabled:                     true;
+    expand:                      true;
+    padding:                     20px;
+    background-color:            @background-alt;
+    border-radius:               12px;
+    children:                    [ "textbox-custom" ];
+}
+
+textbox-custom {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    markup:                      true; 
+    font:                        "JetBrains Mono Bold 14";
+    str:                         "Loading...";
+}
+
+/*****-----(Buttons) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       1;
+    dynamic:                     true;
+    reverse:                     false;    
+    spacing:                     15px;
+    background-color:            transparent;
+    cursor:                      "default";
+    expand:                      false; 
+}
+
+element {
+    enabled:                     true;
+    padding:                     12px;
+    border-radius:               100%; 
+    cursor:                      pointer;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+}
+
+element selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    font:                        "JetBrains Mono 14";
+}

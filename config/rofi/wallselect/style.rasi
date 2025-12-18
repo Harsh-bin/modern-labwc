@@ -1,0 +1,79 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 true;
+    drun-display-format:        "{icon}"; /* Only show icons */
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+* {
+    border-radius:               14px;
+}
+
+/*****----- Main Window -----*****/
+window {
+    background-color:            @background;
+    width:                       85%;
+    location:                    center;
+    anchor:                      center;
+    padding:                     25px;
+    border:                      2px;
+    border-color:                @selected;
+}
+
+/*****----- Main Layout -----*****/
+mainbox {
+    background-color:            inherit;
+    spacing:                     25px;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Message -----*****/
+message {
+    padding:                     0px;
+    background-color:            inherit;
+}
+textbox {
+    background-color:            inherit;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    markup:                      true;
+}
+
+/*****----- List of Thumbnails -----*****/
+listview {
+    columns:                     6;
+    lines:                       2;
+    layout:                      vertical;
+    fixed-columns:               true;
+    fixed-height:                true;
+    spacing:                     inherit; 
+    background-color:            transparent;
+}
+
+/*****----- Element Styling (Each Thumbnail) -----*****/
+element {
+    orientation:                 vertical;
+    padding:                     15px;
+    background-color:            @background-alt;
+    cursor:                      pointer;
+}
+element selected {
+    background-color:            @selected;
+}
+element-icon {
+    size:                        160px; /* Large thumbnail size */
+    background-color:            transparent;
+    border-radius:               8px;
+}
+
+/* This section completely hides the text labels below the thumbnails */
+element-text {
+    font:                        "sans 0";
+    background-color:            transparent;
+    text-color:                  transparent;
+}

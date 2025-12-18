@@ -1,0 +1,3 @@
+pkill -f device-monitor.sh
+killall udevadm monitor
+killall gammastep

@@ -1,0 +1,75 @@
+[global]
+    monitor = 0
+    follow = none
+    width = 400
+    height = (0,250)
+    origin = top-right
+    alignment = "left"
+    vertical_alignment = "center"
+    ellipsize = "middle"
+    offset = "30x30"
+    padding = 15
+    horizontal_padding = 10
+    text_icon_padding = 15
+    icon_position = "left"
+    min_icon_size = 64
+    max_icon_size = 64
+    progress_bar = true
+    progress_bar_height = 7
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_corner_radius = 2
+    progress_bar_corners = 0
+    progress_bar_max_width = 300
+    separator_height = 2
+    frame_width = 1
+    frame_color = "{{colors.primary.default.hex}}"
+    separator_color = "{{colors.primary.default.hex}}"
+    corner_radius = 12
+    transparency = 0.5
+    gap_size = 8
+    line_height = 0
+    notification_limit = 0
+    idle_threshold = 120
+    history_length = 20
+    show_age_threshold = 60
+    markup = "full"
+    font = "JetBrains Mono Nerd Font 10";
+    format = "<b>%s</b>\n%b:
+    word_wrap = "yes"
+    sort = "yes"
+    shrink = "no"
+    indicate_hidden = "yes"
+    sticky_history = "no"
+    ignore_newline = "no"
+    show_indicators = "no"
+    stack_duplicates = true
+    always_run_script = true
+    hide_duplicate_count = false
+    ignore_dbusclose = false
+    force_xwayland = false
+    force_xinerama = false
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    per_monitor_dpi = false
+
+[urgency_low]
+    timeout = 3
+    background = "{{colors.surface.default.hex}}"
+    foreground = "{{colors.on_surface.default.hex}}"
+    highlight = "{{colors.primary_container.default.hex}}"
+[urgency_normal]
+    timeout = 6
+    background = "{{colors.surface.default.hex}}"
+    foreground = "{{colors.on_surface.default.hex}}"
+    highlight = "{{colors.primary_container.default.hex}}"
+[urgency_critical]
+    timeout = 0
+    background = "{{colors.surface.default.hex}}"
+    foreground = "{{colors.on_surface.default.hex}}"
+    highlight = "{{colors.error.default.hex}}"
+
+

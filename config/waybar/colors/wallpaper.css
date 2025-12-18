@@ -1,0 +1,13 @@
+/* waybar matugen colors */
+
+@define-color bar_bg #f8f9ff;
+@define-color bar_fg #191c20;
+@define-color module_bg #eceef4; 
+@define-color module_fg @bar_fg;
+@define-color hover_bg #35618e;
+@define-color hover_fg #ffffff;
+@define-color border_color #73777f;
+@define-color launcher @hover_bg;
+@define-color special #f2daff;
+@define-color special_fg @module_fg;
+@define-color power #ba1a1a;

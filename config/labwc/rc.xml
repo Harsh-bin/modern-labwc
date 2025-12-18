@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<labwc_config>
+    <core>
+        <decoration>server</decoration>
+        <maximizedDecoration>titlebar</maximizedDecoration>
+        <gap>0</gap>
+        <adaptiveSync>no</adaptiveSync>
+        <allowTearing>no</allowTearing>
+        <autoEnableOutputs>yes</autoEnableOutputs>
+        <reuseOutputMode>no</reuseOutputMode>
+        <xwaylandPersistence>no</xwaylandPersistence>
+        <primarySelection>yes</primarySelection>
+    </core>
+
+
+    <placement>
+        <policy>cascade</policy>
+        <!--"automatic" <cascadeOffset x="40" y="30" /> -->
+    </placement>
+    <dropShadows>no</dropShadows>
+    <dropShadowsOnTiled>no</dropShadowsOnTiled>
+    
+
+    <theme>
+        <name>matugen-labwc</name>
+        <font name="Roboto" size="10"/>
+        <cornerRadius>0</cornerRadius>
+    </theme>
+
+<!-- Key bindings -->
+
+    <keyboard>
+        <default/>
+        <keybind key="W-Return">
+            <action name="Execute" command="foot" />
+        </keybind>
+        <keybind key="f11">
+            <action name="ToggleFullscreen" />
+        </keybind>
+        <keybind key="W-s">
+            <action name="Execute" command="sh -c '~/.config/rofi/screen-tool/screen-tool.sh'" />
+            </keybind>       
+        <keybind key="W-l">
+            <action name="Execute" command="loginctl lock-session" />
+            </keybind>
+        <keybind key="W-c">
+            <action name="Reconfigure" />
+        </keybind>
+    </keyboard>
+   
+<!-- mouse binding -->
+
+    <mouse>
+        <default />
+        <!-- Show apps menu on desktop right click -->
+        <context name="Root">
+            <mousebind button="Right" action="Press">
+                <action name="ShowMenu" menu="root-menu" />
+            </mousebind>
+            <mousebind button="Left" action="Press">
+                <action name="None" />
+            </mousebind>
+        </context>
+    </mouse>
+
+<!-- workspace settings -->
+    <desktops number="4" />
+    <desktops>
+        <popupTime>1000</popupTime>
+        <names>
+            <name>WS 1</name>
+            <name>WS 2</name>
+            <name>WS 3</name>
+            <name>WS 4</name>
+        </names>
+    </desktops>
+
+<!--windows rule -->
+
+    <windowRules>
+       <windowRule title="Attention">
+            <action name="ToggleAlwaysOnTop" />
+        </windowRule>
+    </windowRules>
+</labwc_config>

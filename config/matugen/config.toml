@@ -1,0 +1,51 @@
+[config]
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar.css'
+output_path = '~/.config/waybar/colors/wallpaper.css'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors/wallpaper.rasi'
+
+[templates.labwc]
+input_path = '~/.config/matugen/templates/labwc.conf'
+output_path = '~/.config/labwc/themerc-override'
+post_hook = 'labwc --reconfigure'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk3-colors.css'
+output_path = '~/.config/gtk-3.0/colors/wallpaper.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk4-colors.css'
+output_path = '~/.config/gtk-4.0/colors/wallpaper.css'
+
+[templates.qt5ct]
+input_path = '~/.config/matugen/templates/qtct-colors.conf'
+output_path = '~/.config/qt5ct/colors/matugen.conf'
+
+[templates.dunst]
+input_path = '~/.config/matugen/templates/dunstrc-colors.txt'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = 'dunstctl reload'
+
+[templates.hyprlock]
+input_path = '~/.config/matugen/templates/hyprlock.conf'
+output_path = '~/.config/hypr/hyprlock.conf'
+
+[templates.alacritty]
+input_path = '~/.config/matugen/templates/alacritty.toml'
+output_path = '~/.config/alacritty/alacritty.toml'
+
+[templates.foot]
+input_path = '~/.config/matugen/templates/foot.ini'
+output_path = '~/.config/foot/colors.ini'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
