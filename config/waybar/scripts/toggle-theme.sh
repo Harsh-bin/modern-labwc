@@ -11,6 +11,9 @@ waybar_css="$HOME/.config/waybar/style.css"
 # Hyprlock 
 hyprlock_conf="$HOME/.config/hypr/hyprlock.conf"
 hyprlock_bg="$HOME/.config/hypr/hyprlock/background.cache"
+# labwc theme
+labwc_theme_file="$HOME/.config/labwc/themerc-override"
+labwc_theme_dir="$HOME/.config/labwc/colors"
 
 wall_cache=$(find "$wall_dir" -maxdepth 1 -type f -name "wallpaper.*")
 
@@ -47,4 +50,11 @@ else
     fi
     echo "Switched to dark theme."
     "$GTK_THEME_SWITCHER"
+fi
+
+# Check if labwc is using "matugen" theme, then copies the generated wallpaper color to labwc-override file. 
+if grep -q "General" "$labwc_theme_file"; then
+    cp "$labwc_theme_dir/wallpaper.color" "$labwc_theme_file"
+    # Reloads labwc
+    labwc --reconfigure    
 fi
