@@ -26,13 +26,11 @@ tooltip label {
 /* --- Modules: Base --- */
 #clock,
 #network,
-#custom-chrome,
-#custom-terminal,
-#custom-code,
-#custom-music,
-#custom-thunar,
-#custom-todo,
-#custom-countdown,
+#custom-updates,
+#power-profiles-daemon,
+#bluetooth,
+#battery,
+#ext-workspaces,
 #backlight,
 #pulseaudio,
 #memory,
@@ -41,6 +39,7 @@ tooltip label {
 #custom-taskmanager,
 #custom-theme-switcher,
 #tray,
+#custom-notification,
 #idle_inhibitor,
 #custom-power,
 #custom-launcher {
@@ -93,16 +92,16 @@ tooltip label {
 #network:hover,
 #backlight:hover,
 #pulseaudio:hover,
-#memory:hover,
+#bluetooth:hover,
 #custom-clip:hover,
 #custom-snip:hover,
-#custom-taskmanager:hover,
+#custom-updates:hover,
 #custom-theme-switcher:hover,
 #idle_inhibitor:hover,
-#custom-chrome:hover,
-#custom-terminal:hover,
-#custom-code:hover,
-#custom-music:hover,
+#ext-workpaces:hover,
+#battery:hover,
+#power-profiles-daemon:hover,
+#custom-notification:hover,
 #custom-thunar:hover {
     background: @hover_bg;
     color: @hover_fg;
@@ -113,37 +112,17 @@ tooltip label {
     color: @hover_fg;
 }
 
-#custom-todo:hover,
-#custom-countdown:hover {
-    background: @special;
-    color: @special_fg;
-}
-
-
 #custom-power:hover {
     background: @power;
     color: @bar_bg;
 }
 
-/* --- Taskbar --- */
-#taskbar {
-    background: @module_bg;
-    margin: 4px;
-    padding: 2px;
-    border-radius: 99px;
+#ext-workspaces button {
+    color: @module_fg;
 }
 
-#taskbar button {
-    padding: 0 8px;
-    border: 1px solid transparent;
-    border-radius: 99px;
-    transition: background 0.3s ease;
+/* active workspace in @power color */
+#ext-workspaces button.active {
+    color: @power;
 }
 
-#taskbar button.active {
-    background: alpha(@hover_bg, 0.25);
-}
-
-#taskbar button:hover {
-    background: alpha(@hover_bg, 0.15);
-}

@@ -3,7 +3,7 @@ XKB_DEFAULT_LAYOUT=us
 LANG=en_IN.UTF-8
 
 # --- Cursor ---
-XCURSOR_THEME=Bibata-Modern-Ice
+XCURSOR_THEME=catppuccin-pink
 XCURSOR_SIZE=24
 
 # --- Qt ---
@@ -12,13 +12,16 @@ QT_QPA_PLATFORMTHEME=qt6ct
 
 # --- GTK ---
 #GDK_BACKEND=wayland,x11
-# GDK_DEBUG=no-portals  <-- Keep this only if file pickers are slow!
+#GDK_DEBUG=no-portals  <-- Keep this only if file pickers are slow!
 
 # --- Java Fix (Minecraft / IntelliJ) ---
-#_JAVA_AWT_WM_NONREPARENTING=1
+_JAVA_AWT_WM_NONREPARENTING=1
 
 # --- Browser Performance ---
-#MOZ_ENABLE_WAYLAND=1
+MOZ_ENABLE_WAYLAND=1
+
+# --- Use Vulkan ---
+WLR_RENDER=vulkan
 
 # --- Desktop Identity (Helps with screen sharing) ---
 #XDG_CURRENT_DESKTOP=labwc:wlroots

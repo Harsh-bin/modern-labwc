@@ -3,7 +3,8 @@
 dir="$HOME/.config/rofi/clipboard"
 
 # The main clipboard ( Added Image History support )
-choice=$(echo -e "\t\uf03e   Image History\n\t\uf1f8   Wipe Clipboard\n$(cliphist list)" | rofi -markup-rows -dmenu -display-columns 2 -theme ${dir}/clipboard.rasi)
+choice=$(echo -e "\t\uf03e   Image History\n\t\uf1f8   Wipe Clipboard\n$(cliphist list)" | rofi -markup-rows -dmenu -display-columns 2 -theme ${dir}/clipboard.rasi \
+       -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
 
 if [[ $choice == *"Image History"* ]]; then
   img_choice=$(${dir}/cliphist_rofi_img | rofi -dmenu -theme ${dir}/clipboard_img.rasi)
@@ -19,7 +20,8 @@ elif [[ $choice == *"Wipe Clipboard"* ]]; then
   confirmation=$(echo -e "$no\n$yes" |
     rofi -dmenu \
     -mesg $'<big><b>Wipe Clipboard Confirmation</b></big>\nAre you sure you want to wipe the clipboard?' \
-    -theme ${dir}/confirmation.rasi)
+    -theme ${dir}/confirmation.rasi \
+    -hover-select -me-select-entry '' -me-accept-entry MousePrimary) 
 
 if [[ $confirmation == "$yes" ]]; then
     cliphist wipe

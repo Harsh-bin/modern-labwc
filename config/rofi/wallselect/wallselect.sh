@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #####################################
-## author @Harsh-bin Github #########
+## author @Rocklin K S Github #########
 #####################################
 
 # Change path to wallpaper
-wall_dir="/usr/share/backgrounds/images/"
+wall_dir="/home/rocklin/Pictures/"
 
 # Directories to copy wallpaper
 rofi_img="$HOME/.config/rofi/images/"
@@ -45,7 +45,8 @@ selected=$(find "$wall_dir" \
   while read -r img; do
     echo -en "$img\0icon\x1f$img\n"
   done |
-  rofi -dmenu -mesg "<big><b>Select Wallpaper</b></big>" -show-icons -theme "$HOME/.config/rofi/wallselect/style.rasi")
+  rofi -dmenu -mesg "<big><b>Select Wallpaper</b></big>" -show-icons -theme "$HOME/.config/rofi/wallselect/style.rasi" \
+       -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
 
 # Exit if no wallpaper is selected
 if [ -z "$selected" ]; then
@@ -71,13 +72,15 @@ change_color_scheme_to_wallpaper() {
 
 # --- Main Menu ---
 main_options="Yes\nNo"
-main_choice=$(echo -e "$main_options" | rofi -dmenu -mesg "<b>Set Color Scheme from wallpaper?</b>" -theme "$horizontal_menu")
+main_choice=$(echo -e "$main_options" | rofi -dmenu -mesg "<b>Set Color Scheme from wallpaper?</b>" -theme "$horizontal_menu" \
+       -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
 
 # --- Handle the choice with a case statement ---
 case "$main_choice" in
     "Yes")
         options="Light\nDark"
-        choice=$(echo -e "$options" | rofi -dmenu -mesg "<b>Select Color Scheme</b>" -theme "$horizontal_menu")
+        choice=$(echo -e "$options" | rofi -dmenu -mesg "<b>Select Color Scheme</b>" -theme "$horizontal_menu" \
+               -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
         case "$choice" in
              "Light")
                 # Generates light color scheme from wallpaper

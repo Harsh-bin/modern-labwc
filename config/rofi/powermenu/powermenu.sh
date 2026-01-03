@@ -2,7 +2,7 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/"
-theme='style-1'
+theme='style-2'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
@@ -22,7 +22,11 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "$host" \
 		-mesg "Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme ${dir}/${theme}.rasi \
+        -hover-select \
+        -me-select-entry "" \
+        -me-accept-entry "MousePrimary"
+ 
 }
 
 # Confirmation CMD
@@ -35,7 +39,11 @@ confirm_cmd() {
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
-		-theme ${dir}/${theme}.rasi
+		-theme ${dir}/${theme}.rasi \
+        -hover-select \
+        -me-select-entry "" \
+        -me-accept-entry "MousePrimary"
+
 }
 
 # Ask for confirmation

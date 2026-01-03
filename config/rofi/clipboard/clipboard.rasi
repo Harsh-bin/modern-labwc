@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
 	show-icons: 		true;
+    mouse-hover-select:         true;
+    mouse-click-to-accept:      true;
+    kb-cancel:                  "Escape";
 }
 
 /*****----- Global Properties -----*****/

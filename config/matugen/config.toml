@@ -21,30 +21,19 @@ output_path = '~/.config/gtk-3.0/colors/wallpaper.css'
 input_path = '~/.config/matugen/templates/gtk4-colors.css'
 output_path = '~/.config/gtk-4.0/colors/wallpaper.css'
 
-[templates.qt5ct]
-input_path = '~/.config/matugen/templates/qtct-colors.conf'
-output_path = '~/.config/qt5ct/colors/matugen.conf'
+#[templates.qt5ct]
+#input_path = '~/.config/matugen/templates/qtct-colors.conf'
+#output_path = '~/.config/qt5ct/colors/matugen.conf'
 
-[templates.dunst]
-input_path = '~/.config/matugen/templates/dunstrc-colors.txt'
-output_path = '~/.config/dunst/dunstrc'
-post_hook = 'dunstctl reload'
+#[templates.dunst]
+#input_path = '~/.config/matugen/templates/swaync-style.css'
+#output_path = '~/.config/swaync/style.css'
+#post_hook = 'swaync-client -R'
 
-[templates.alacritty]
-input_path = '~/.config/matugen/templates/alacritty.toml'
-output_path = '~/.config/alacritty/alacritty.toml'
-
-[templates.foot]
-input_path = '~/.config/matugen/templates/foot.ini'
-output_path = '~/.config/foot/colors.ini'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'
-
-[templates.btop]
-input_path = '~/.config/matugen/templates/btop.theme'
-output_path = '~/.config/btop/themes/matugen.theme'
 
 [templates.mpv]
 input_path = '~/.config/matugen/templates/modernz.conf'

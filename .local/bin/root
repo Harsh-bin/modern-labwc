@@ -1,0 +1,10 @@
+#!/bin/sh
+uid=$(id -u)
+pkexec env \
+  WAYLAND_DISPLAY="$WAYLAND_DISPLAY" \
+  XDG_RUNTIME_DIR="/run/user/$uid" \
+  XDG_CURRENT_DESKTOP="$XDG_CURRENT_DESKTOP" \
+  DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+  GDK_BACKEND=wayland \
+  "$@" 2>/dev/null
+

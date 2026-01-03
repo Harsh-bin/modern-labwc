@@ -26,7 +26,9 @@ fi
 main_choice=$(echo -e "$main_options" | 
     rofi -dmenu \
     -mesg "$(printf '%s\n\n<b>Usage:</b>\n● Esc to cancel selection\n● Hold spacebar to drag selection' "$mesg")" \
-    -theme "$rofi_menu")
+    -theme "$rofi_menu" \
+    -hover-select -me-select-entry '' -me-accept-entry MousePrimary) 
+
 
 # Function to take screenshot
 screenshot_menu() {
@@ -40,7 +42,9 @@ screenshot_menu() {
         option=$(echo -e "Save\nCopy to clipboard" | 
             rofi -dmenu \
             -mesg $'<big><b>Screenshot</b></big>\n\nEsc to cancel' \
-            -theme "$rofi_menu")
+            -theme "$rofi_menu" \
+            -hover-select -me-select-entry '' -me-accept-entry MousePrimary) 
+
 
         case "$option" in
             "Save")

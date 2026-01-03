@@ -26,17 +26,19 @@ tooltip label {
 /* --- Modules: Base --- */
 #clock,
 #network,
-#custom-todo,
-#custom-countdown,
+#custom-updates,
+#ext-workspaces,
 #backlight,
 #pulseaudio,
-#memory,
+#battery,
 #custom-clip,
 #custom-snip,
-#custom-taskmanager,
+#bluetooth,
 #custom-theme-switcher,
 #tray,
+#power-profiles-daemon,
 #idle_inhibitor,
+#custom-notification,
 #custom-power,
 #custom-launcher {
     background: @module_bg;
@@ -48,30 +50,6 @@ tooltip label {
 }
 
 /* --- Modules: Strip --- */
-#custom-chrome,
-#custom-terminal,
-#custom-code,
-#custom-music,
-#custom-thunar {
-    background: @module_bg;
-    color: @module_fg;
-    padding: 0px 13px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 0px;
-    border-radius: 0;
-    transition: all 0.3s ease;
-}
-
-#custom-chrome {
-    margin-left: 2px;
-    border-radius: 8px 0 0 8px;
-}
-
-#custom-thunar {
-    margin-right: 4px;
-    border-radius: 0 8px 8px 0;
-}
 
 #custom-launcher {
     color: @launcher;
@@ -106,16 +84,16 @@ tooltip label {
 #network:hover,
 #backlight:hover,
 #pulseaudio:hover,
-#memory:hover,
+#battery:hover,
 #custom-clip:hover,
 #custom-snip:hover,
-#custom-taskmanager:hover,
+#custom-updates:hover,
 #custom-theme-switcher:hover,
 #idle_inhibitor:hover,
-#custom-launcher:hover,
-#custom-chrome:hover,
-#custom-terminal:hover,
-#custom-code:hover,
+#ext-workspaces:hover,
+#bluetooth:hover,
+#power-profiles-daemon:hover,
+#custom-notification:hover,
 #custom-music:hover,
 #custom-thunar:hover {
     background: @hover_bg;
@@ -134,26 +112,11 @@ tooltip label {
     color: @bar_bg;
 }
 
-/* --- Taskbar --- */
-#taskbar {
-    background: @module_bg;
-    margin: 4px;
-    padding: 0 8px;
-    border-radius: 8px;
+#ext-workspaces button {
+    color: @module_fg;
 }
 
-#taskbar button {
-    padding: 0 8px;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s ease;
-}
-
-#taskbar button.active {
-    background: alpha(@hover_bg, 0.25);
-    border-bottom-color: @hover_bg;
-}
-
-#taskbar button:hover {
-    background: alpha(@hover_bg, 0.15);
-    border-bottom-color: alpha(@hover_bg, 0.65);
+/* active workspace in @power color */
+#ext-workspaces button.active {
+    color: @power;
 }

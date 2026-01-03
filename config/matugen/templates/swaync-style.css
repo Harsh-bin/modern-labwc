@@ -1,0 +1,125 @@
+/* swaync-style.css - Matugen template for swaync */
+/* Uses same color variables as your dunst config */
+
+* {
+    background-color: {{colors.surface.default.hex}};
+    color: {{colors.on_surface.default.hex}};
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    padding: 15px 10px;
+    margin: 0;
+    border-radius: 12px;
+}
+
+/* Main window */
+#window {
+    background-color: {{colors.surface.default.hex}};
+    color: {{colors.on_surface.default.hex}};
+    border: 1px solid {{colors.primary.default.hex}};
+    margin: 30px;
+    margin-top: 30px;
+    margin-right: 0;
+    width: 350px;
+    max-height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Notifications list */
+#list {
+    padding: 8px;
+    spacing: 8px;
+}
+
+/* Individual notification */
+.notification {
+    background-color: {{colors.surface.default.hex}};
+    color: {{colors.on_surface.default.hex}};
+    border: 1px solid {{colors.primary.default.hex}};
+    border-radius: 12px;
+    margin: 4px;
+    padding: 15px;
+}
+
+/* Notification title */
+.notification-title {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* Notification body */
+.notification-body {
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+/* Icons */
+.notification-icon {
+    margin-right: 15px;
+    min-width: 64px;
+    max-width: 64px;
+}
+
+/* Progress bar */
+#progress-bar {
+    height: 7px;
+    background-color: {{colors.primary_container.default.hex}};
+    border: 1px solid {{colors.primary.default.hex}};
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+/* Progress fill */
+#progress-bar .trough {
+    background-color: {{colors.primary.default.hex}};
+    border-radius: 2px;
+}
+
+/* Separator */
+#separator {
+    background-color: {{colors.primary.default.hex}};
+    min-height: 2px;
+    margin: 8px 0;
+}
+
+/* Buttons */
+#button {
+    background-color: {{colors.primary_container.default.hex}};
+    color: {{colors.on_surface.default.hex}};
+    border: 1px solid {{colors.primary.default.hex}};
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin: 4px;
+}
+
+#button:hover {
+    background-color: {{colors.primary.default.hex}};
+}
+
+/* Urgency overrides */
+.notification.urgency_critical {
+    border-color: {{colors.error.default.hex}};
+}
+
+.notification.urgency_critical .notification-title,
+.notification.urgency_critical .notification-body {
+    color: {{colors.on_surface.default.hex}};
+}
+
+.notification.urgency_critical #progress-bar {
+    background-color: {{colors.error.default.hex}};
+}
+
+/* Scrollbar */
+#scroll {
+    background-color: {{colors.primary_container.default.hex}};
+    border: 1px solid {{colors.primary.default.hex}};
+    border-radius: 12px;
+    width: 12px;
+}
+
+/* Mouse interactions match dunst */
+.notification:hover {
+    background-color: {{colors.primary_container.default.hex}};
+}
+

@@ -1,151 +1,211 @@
 <?xml version="1.0"?>
 <labwc_config>
-    <core>
-        <decoration>server</decoration>
-        <maximizedDecoration>titlebar</maximizedDecoration>
-        <gap>0</gap>
-        <adaptiveSync>no</adaptiveSync>
-        <allowTearing>no</allowTearing>
-        <autoEnableOutputs>yes</autoEnableOutputs>
-        <reuseOutputMode>no</reuseOutputMode>
-        <xwaylandPersistence>no</xwaylandPersistence>
-        <primarySelection>yes</primarySelection>
-    </core>
-    <placement>
-        <policy>cascade</policy>
-        <!--"automatic" <cascadeOffset x="40" y="30" /> -->
-    </placement>
-    <dropShadows>no</dropShadows>
-    <dropShadowsOnTiled>no</dropShadowsOnTiled>
-    <theme>
-        <name>matugen-labwc</name>
-        <font name="Roboto" size="10" />
-        <cornerRadius>0</cornerRadius>
-    </theme>
+  <core>
+    <decoration>server</decoration>
+    <maximizedDecoration>titlebar</maximizedDecoration>
+    <gap>0</gap>
+    <adaptiveSync>no</adaptiveSync>
+    <allowTearing>no</allowTearing>
+    <autoEnableOutputs>yes</autoEnableOutputs>
+    <reuseOutputMode>no</reuseOutputMode>
+    <xwaylandPersistence>no</xwaylandPersistence>
+    <primarySelection>yes</primarySelection>
+  </core>
+  <placement>
+    <policy>cascade</policy>
+    <!--"automatic" <cascadeOffset x="40" y="30" /> -->
+  </placement>
+  <dropShadows>no</dropShadows>
+  <dropShadowsOnTiled>no</dropShadowsOnTiled>
+  <theme>
+    <name>matugen-labwc</name>
+    <font name="Roboto" size="10"/>
+    <cornerRadius>0</cornerRadius>
+    <icon>ColorFlow.Agresive.Color</icon>
+  </theme>
 
-
-    <!-- Key bindings -->
-    <keyboard>
-        <default />
-        <keybind key="W-Return">
-            <action name="Execute" command="foot" />
-        </keybind>
-        <keybind key="f11">
-            <action name="ToggleFullscreen" />
-        </keybind>
-        <keybind key="W-s">
-            <action name="Execute" command="sh -c '~/.config/rofi/screen-tool/screen-tool.sh'" />
-        </keybind>
-        <keybind key="W-l">
-            <action name="Execute" command="loginctl lock-session" />
-        </keybind>
-        <keybind key="W-c">
-            <action name="Reconfigure" />
-        </keybind>
-        <keybind key="A-Tab">
-            <action name="NextWindow" />
-        </keybind>
-        <keybind key="A-S-Tab">
-            <action name="PreviousWindow" />
-        </keybind>
-        <!-- Switch between workspaces -->
-        <keybind key="W-1">
-            <action name="GoToDesktop" to="1" />
-        </keybind>
-        <keybind key="W-2">
-            <action name="GoToDesktop" to="2" />
-        </keybind>
-        <keybind key="W-3">
-            <action name="GoToDesktop" to="3" />
-        </keybind>
-        <keybind key="W-4">
-            <action name="GoToDesktop" to="4" />
-        </keybind>
-        <!-- Move active window to workspace -->
-        <keybind key="W-S-1">
-            <action name="SendToDesktop" to="1" />
-        </keybind>
-        <keybind key="W-S-2">
-            <action name="SendToDesktop" to="2" />
-        </keybind>
-        <keybind key="W-S-3">
-            <action name="SendToDesktop" to="3" />
-        </keybind>
-        <keybind key="W-S-4">
-            <action name="SendToDesktop" to="4" />
-        </keybind>
-        <!-- Snap windows to halves/corners -->
-        <keybind key="W-Left">
-            <action name="SnapToEdge" direction="left" />
-        </keybind>
-        <keybind key="W-Right">
-            <action name="SnapToEdge" direction="right" />
-        </keybind>
-        <keybind key="W-Up">
-            <action name="SnapToEdge" direction="up" />
-        </keybind>
-        <keybind key="W-Down">
-            <action name="SnapToEdge" direction="down" />
-        </keybind>
-    </keyboard>
-
-
-    <!-- mouse binding -->
-    <mouse>
-        <default />
-        <!-- Show apps menu on desktop right click -->
-        <context name="Root">
-            <mousebind button="Right" action="Press">
-                <action name="ShowMenu" menu="root-menu" />
-            </mousebind>
-            <mousebind button="Left" action="Press">
-                <action name="None" />
-            </mousebind>
-        </context>
-    </mouse>
-    <!-- workspace settings -->
-    <desktops number="4" />
-    <desktops>
-        <popupTime>1000</popupTime>
-        <names>
-            <name>WS 1</name>
-            <name>WS 2</name>
-            <name>WS 3</name>
-            <name>WS 4</name>
-        </names>
-    </desktops>
-
-
-    <libinput>
-        <!-- TOUCHPAD: laptop trackpads -->
-        <device category="touchpad">
-            <pointerSpeed>0.3</pointerSpeed> <!-- -1.0(slowest) to 1.0(fastest) -->
-            <accelProfile>adaptive</accelProfile> <!-- adaptive, flat -->
-            <naturalScroll>no</naturalScroll>
-            <scrollFactor>0.3</scrollFactor>
-            <scrollMethod>twoFinger</scrollMethod> <!-- twoFinger, edge -->
-            <tap>yes</tap>
-            <tapButtonMap>lrm</tapButtonMap>
-            <tapAndDrag>yes</tapAndDrag>
-            <dragLock>no</dragLock>
-            <disableWhileTyping>yes</disableWhileTyping>
-            <clickMethod>buttonAreas</clickMethod> <!-- buttonAreas, clickfinger, none -->
-        </device>
-        <!-- NON-TOUCH: physical/external mice -->
-        <device category="non-touch">
-            <pointerSpeed>1.0</pointerSpeed>
-            <accelProfile>adaptive</accelProfile>
-            <naturalScroll>no</naturalScroll>
-            <scrollFactor>1.0</scrollFactor>
-            <leftHanded>no</leftHanded>
-        </device>
-    </libinput>
-
-
-    <!--windows rule -->
-    <windowRules>
-        <windowRule title="Attention">
-            <action name="ToggleAlwaysOnTop" />
-        </windowRule>
-    </windowRules>
+  <!-- Key bindings -->
+  <keyboard>
+    <default/>
+    <keybind key="W-t">
+      <action name="Execute" command="xfce4-terminal"/>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute" command="thunar"/>
+    </keybind>
+    <keybind key="W-f">
+      <action name="Execute" command="firefox"/>
+    </keybind>
+    <keybind key="f11">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-s">
+      <action name="Execute" command="sh -c '~/.config/rofi/screen-tool/screen-tool.sh'"/>
+    </keybind>
+    <keybind key="W-l">
+      <action name="Execute" command="loginctl lock-session"/>
+    </keybind>
+    <keybind key="W-c">
+      <action name="Reconfigure"/>
+    </keybind>
+    <keybind key="A-Tab">
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow"/>
+    </keybind>
+    <!-- Switch between workspaces -->
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1"/>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2"/>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3"/>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4"/>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5"/>
+    </keybind>
+    <!-- Move active window to workspace -->
+    <keybind key="W-S-1">
+      <action name="SendToDesktop" to="1"/>
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop" to="2"/>
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop" to="3"/>
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4"/>
+    </keybind>
+    <keybind key="W-S-5">
+      <action name="SendToDesktop" to="5"/>
+    </keybind>
+    <!-- Snap windows to halves/corners -->
+    <keybind key="W-Left">
+      <action name="SnapToEdge" direction="left"/>
+    </keybind>
+    <keybind key="W-Right">
+      <action name="SnapToEdge" direction="right"/>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="SnapToEdge" direction="up"/>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="SnapToEdge" direction="down"/>
+    </keybind>
+    <keybind key="XF86_AudioLowerVolume">
+      <action name="Execute" command="amixer sset Master 5%-"/>
+    </keybind>
+    <keybind key="XF86_AudioRaiseVolume">
+      <action name="Execute" command="amixer sset Master 5%+"/>
+    </keybind>
+    <keybind key="XF86_AudioMute">
+      <action name="Execute" command="amixer sset Master toggle"/>
+    </keybind>
+    <keybind key="XF86_MonBrightnessUp">
+      <action name="Execute" command="brightnessctl set +5%"/>
+    </keybind>
+    <keybind key="XF86_MonBrightnessDown">
+      <action name="Execute" command="brightnessctl set 5%-"/>
+    </keybind>
+    <numlock>on</numlock>
+    <keybind key="W-a">
+      <action name="Execute" command="killall rofi 2&gt;/dev/null || bash ~/.config/rofi/launchers/launcher.sh 2&gt;/dev/null"/>
+    </keybind>
+    <keybind key="W-x">
+      <action name="Execute" command="killall rofi 2&gt;/dev/null || bash ~/.config/rofi/powermenu/powermenu.sh 2&gt;/dev/null"/>
+    </keybind>
+  </keyboard>
+  <!-- mouse binding -->
+  <mouse>
+    <default/>
+    <!-- Show apps menu on desktop right click -->
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="root-menu"/>
+      </mousebind>
+      <mousebind button="Left" action="Press">
+        <action name="None"/>
+      </mousebind>
+    </context>
+  </mouse>
+  <!-- workspace settings -->
+  <desktops number="5"/>
+  <desktops>
+    <popupTime>1000</popupTime>
+    <first-desktop>1</first-desktop>
+    <cycle>yes</cycle>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+    </names>
+  </desktops>
+  <libinput>
+    <!-- TOUCHPAD: laptop trackpads -->
+    <device category="touchpad">
+      <pointerSpeed>0.3</pointerSpeed>
+      <!-- -1.0(slowest) to 1.0(fastest) -->
+      <accelProfile>adaptive</accelProfile>
+      <!-- adaptive, flat -->
+      <naturalScroll>no</naturalScroll>
+      <scrollFactor>0.3</scrollFactor>
+      <scrollMethod>twoFinger</scrollMethod>
+      <!-- twoFinger, edge -->
+      <tap>yes</tap>
+      <tapButtonMap>lrm</tapButtonMap>
+      <tapAndDrag>yes</tapAndDrag>
+      <dragLock>no</dragLock>
+      <disableWhileTyping>yes</disableWhileTyping>
+      <clickMethod>buttonAreas</clickMethod>
+      <!-- buttonAreas, clickfinger, none -->
+      <middleEmulation>yes</middleEmulation>
+    </device>
+    <!-- NON-TOUCH: physical/external mice -->
+    <device category="non-touch">
+      <pointerSpeed>1.0</pointerSpeed>
+      <accelProfile>adaptive</accelProfile>
+      <naturalScroll>no</naturalScroll>
+      <scrollFactor>1.0</scrollFactor>
+      <leftHanded>no</leftHanded>
+    </device>
+  </libinput>
+  <!--windows rule -->
+  <windowRules>
+    <windowRule title="Attention">
+      <action name="ToggleAlwaysOnTop"/>
+    </windowRule>
+  </windowRules>
+  <resistance>
+    <unMaximizeTreshold>100</unMaximizeTreshold>
+  </resistance>
+  <resize>
+    <popupShow>Never</popupShow>
+  </resize>
+  <dock>
+    <position>Bottom</position>
+    <floatingX>0</floatingX>
+    <floatingY>0</floatingY>
+    <strut>
+      <left>0</left>
+      <right>0</right>
+      <top>0</top>
+      <bottom>27</bottom>
+    </strut>
+    <noStrut>no</noStrut>
+    <stacking>Above</stacking>
+    <direction>Horizontal</direction>
+    <autoHide>yes</autoHide>
+    <hideDelay>300</hideDelay>
+    <showDelay>300</showDelay>
+    <moveButton>Middle</moveButton>
+  </dock>
 </labwc_config>

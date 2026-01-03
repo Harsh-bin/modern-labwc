@@ -26,17 +26,19 @@ tooltip label {
 /* --- Modules: Base --- */
 #clock,
 #network,
-#custom-todo,
-#custom-countdown,
+#bluetooth,
+#custom-updates,
+#ext-workspaces,
 #backlight,
 #pulseaudio,
-#memory,
+#battery,
 #custom-clip,
 #custom-snip,
-#custom-taskmanager,
+#power-profiles-daemon,
 #custom-theme-switcher,
 #tray,
 #idle_inhibitor,
+#custom-notification,
 #custom-power,
 #custom-launcher {
     background: @module_bg;
@@ -102,16 +104,16 @@ tooltip label {
 #network:hover,
 #backlight:hover,
 #pulseaudio:hover,
-#memory:hover,
+#bluetooth:hover,
 #custom-clip:hover,
 #custom-snip:hover,
-#custom-taskmanager:hover,
+#custom-updates:hover,
 #custom-theme-switcher:hover,
 #idle_inhibitor:hover,
-#custom-launcher:hover,
-#custom-chrome:hover,
-#custom-terminal:hover,
-#custom-code:hover,
+#ext-workspaces:hover,
+#battery:hover,
+#power-profiles-daemon:hover,
+#custom-notification:hover,
 #custom-music:hover,
 #custom-thunar:hover {
     background: @hover_bg;
@@ -131,25 +133,11 @@ tooltip label {
     color: @bar_bg;
 }
 
-/* --- Taskbar --- */
-#taskbar {
-    background: @module_bg;
-    margin: 4px;
-    padding: 2px;
-    border-radius: 99px;
+#ext-workspaces button {
+    color: @module_fg;
 }
 
-#taskbar button {
-    padding: 0 8px;
-    border: 1px solid transparent;
-    border-radius: 99px;
-    transition: background 0.3s ease;
-}
-
-#taskbar button.active {
-    background: alpha(@hover_bg, 0.25);
-}
-
-#taskbar button:hover {
-    background: alpha(@hover_bg, 0.15);
+/* active workspace in @power color */
+#ext-workspaces button.active {
+    color: @power;
 }

@@ -27,14 +27,18 @@ tooltip label {
 /* --- Modules: Base --- */
 #clock,
 #network,
-#custom-todo,
-#custom-countdown,
+#custom-updates,
+#ext-workspaces,
+#bluetooth,
+#battery,
+#power-profiles-daemon,
 #backlight,
 #pulseaudio,
 #memory,
 #custom-clip,
 #custom-snip,
 #custom-taskmanager,
+#custom-notification,
 #custom-theme-switcher,
 #tray,
 #idle_inhibitor,
@@ -50,31 +54,9 @@ tooltip label {
 }
 
 /* --- Modules: Strip --- */
-#custom-chrome,
-#custom-terminal,
-#custom-code,
-#custom-music,
-#custom-thunar {
-    background: @module_bg;
-    color: @module_fg;
-    padding: 0px 13px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 0px;
-    border: 2px solid transparent;
-    border-radius: 0;
-    transition: all 0.3s ease;
-}
 
-#custom-chrome {
-    margin-left: 4px;
-    border-radius: 8px 0 0 8px;
-}
 
-#custom-thunar {
-    margin-right: 4px;
-    border-radius: 0 8px 8px 0;
-}
+
 
 #custom-launcher {
     color: @launcher;
@@ -110,16 +92,17 @@ tooltip label {
 #network:hover,
 #backlight:hover,
 #pulseaudio:hover,
-#memory:hover,
+#bluetooth:hover,
 #custom-clip:hover,
 #custom-snip:hover,
 #custom-taskmanager:hover,
+#custom-notification:hover,
 #custom-theme-switcher:hover,
 #idle_inhibitor:hover,
-#custom-chrome:hover,
-#custom-terminal:hover,
-#custom-code:hover,
-#custom-music:hover,
+#custom-updates:hover,
+#ext-workspaces:hover,
+#battery:hover,
+#power-profiles-daemon:hover,
 #custom-thunar:hover {
     color: @hover_bg;
     border-color: @hover_bg;
@@ -141,29 +124,11 @@ tooltip label {
     border-color: @power;
 }
 
-/* --- Taskbar --- */
-#taskbar {
-    background: @module_bg;
-    margin: 4px;
-    padding: 0 6px;
-    border-radius: 8px;
-    border: 1px solid alpha(@hover_bg, 0.15);
+#ext-workspaces button {
+    color: @module_fg;
 }
 
-#taskbar button {
-    padding: 0 8px;
-    background: transparent;
-    border-bottom: 3px solid transparent;
-    transition: border-bottom-color 0.3s ease;
+/* active workspace in @power color */
+#ext-workspaces button.active {
+    color: @power;
 }
-
-#taskbar button.active {
-    background: transparent;
-    border-bottom-color: @hover_bg;
-}
-
-#taskbar button:hover {
-    background: transparent;
-    border-bottom-color: alpha(@hover_bg, 0.65);
-}
-
