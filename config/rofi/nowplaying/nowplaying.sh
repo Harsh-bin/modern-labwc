@@ -138,14 +138,14 @@ selected_option=$(echo -e "$pre\n$toogle\n$next" | rofi -dmenu \
 case "$selected_option" in
     "$pre") 
         playerctl -p "$active_player" previous 
-        notify-send "$player_display_name Skipped" "$short_title\n$song_artist" --icon="$art_file"
+        notify-send "$player_display_name Skipped" "$short_title\n<span style='italic' alpha='85%'>$song_artist</span>" --icon="$art_file"
         ;;
     "$toogle") 
         playerctl -p "$active_player" play-pause 
-        notify-send "$player_display_name $notify_status" "$short_title\n$song_artist" --icon="$art_file"
+        notify-send "$player_display_name $notify_status" "$short_title\n<span style='italic' alpha='85%'>$song_artist</span>" --icon="$art_file"
         ;;
     "$next")
         playerctl -p "$active_player" next      
-        notify-send "$player_display_name Skipped" "$short_title\n$song_artist" --icon="$art_file"
+        notify-send "$player_display_name Skipped" "$short_title\n<span style='italic' alpha='85%'>$song_artist</span>" --icon="$art_file"
         ;;
 esac

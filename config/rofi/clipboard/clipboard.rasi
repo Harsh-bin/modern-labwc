@@ -37,7 +37,7 @@ mainbox {
 inputbar {
     enabled:                     true;
     spacing:                     0px;
-    padding:                     28px 24px 0px 24px;
+    padding:                     15px 15px 0px 15px; 
     background-color:            transparent;
     text-color:                  @foreground;
     orientation:                 horizontal;
@@ -51,13 +51,14 @@ dummy {
 entry {
     enabled:                     true;
     expand:                      false;
-    width:                       400px;
-    padding:                     12px 16px 8px 16px;
+    width:                       418px;
+    padding:                     15px;
+    margin:                      0px;
     border-radius:               8px;
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search";
+    placeholder:                 "   Search";
     placeholder-color:           inherit;
 }
 
@@ -66,7 +67,8 @@ textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "";
-    padding:                     10px 14px 10px 14px;
+    padding:                     10px;
+    margin:                      0px;
     border-radius:               6px;
     background-color:            @active;
     text-color:                  @background;
@@ -76,7 +78,7 @@ textbox-prompt-colon {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       6;
+    lines:                       8;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;
@@ -85,14 +87,14 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     spacing:                     0px;
-    margin: 			         28px 20px;
+    margin: 			 15px;
     border-radius: 		         6px;
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      "default";
 }
 scrollbar {
-    handle-width:                5px ;
+    handle-width:                3px ;
     margin: 			         0px 0px 0px 2px;
     handle-color:                @foreground;
     background-color:            @background-alt;
@@ -102,7 +104,7 @@ scrollbar {
 element {
     enabled:                     true;
     spacing:                     0px;
-    padding:                     12px 8px;
+    padding:                     5px;
     border-radius:               0px;
     background-color:            transparent;
     text-color:                  @foreground;
@@ -118,7 +120,7 @@ element-icon {
     text-color:                   @foreground;
 }
 element-text {
-    padding: 			         0px 16px;
+    padding: 			 5px;
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;

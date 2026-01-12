@@ -7,7 +7,7 @@ configuration {
 @import                          "~/.config/rofi/shared/colors.rasi"
 
 * {
-    border-radius:               14px;
+    border-radius:               6px;
 }
 
 /*****----- Main Window -----*****/
@@ -24,7 +24,7 @@ window {
     border:                      1px;
     border-color:                @selected;
     background-color:            @background;
-    padding:                     15px;
+    padding:                     10px;
 }
 
 /*****----- Main Box -----*****/
@@ -48,7 +48,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    spacing:                     15px; 
+    spacing:                     10px; 
     margin: 			         0px;
     background-color:            transparent;
     cursor:                      "default";
@@ -57,10 +57,9 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     12px; 
+    padding:                     0px; 
     cursor:                      pointer;
     orientation:                 vertical;
-    horizontal-align:            0.5;
     background-color:            @background-alt;
 }
 
@@ -72,13 +71,11 @@ element.selected  {
 element-icon {
     size:                         120px; 
     background-color:             transparent;
-    horizontal-align:             0.5;
     border-radius:                8px;
 }
 
 element-text {
+    font:                        "sans 0";
     background-color:            transparent;
     text-color:                  transparent;
-    horizontal-align:            0.5;
-    vertical-align:              0.5;
 }
