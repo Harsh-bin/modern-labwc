@@ -280,7 +280,10 @@ A ready to use configuration for **Labwc** wayland compositor with 19 preconfigu
 
 ## Installation
 
-**Arch Linux Users:**
+### 🎯 Automated Installation (Recommended)
+
+The setup script now supports **Arch Linux**, **Ubuntu**, **Debian**, and their derivatives!
+
 ```bash
 git clone https://github.com/Harsh-bin/modern-labwc/
 cd modern-labwc
@@ -288,22 +291,171 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-**Other Distributions:**
-1. Install dependencies manually.
-2. Copy config files to `~/.config/` matching the directory structure.
-3. Copy fonts to `~/.local/share/`.
-4. Copy `matugen-labwc` theme folder to `~/.themes`.
+The script will:
+- ✅ Auto-detect your distribution
+- ✅ Install available packages from your repos
+- ✅ Build missing packages from source (Ubuntu/Debian)
+- ✅ Deploy all configurations
+- ✅ Install fonts and themes
+- ✅ Set up your desktop environment
+
+---
+
+### 📦 Distribution-Specific Notes
+
+#### **Arch Linux**
+All packages are available in official repositories or AUR. Installation is quick and straightforward.
+
+#### **Ubuntu 24.04 / Debian**
+Some packages need to be built from source:
+- `labwc` - Main compositor
+- `matugen` - Color scheme generator (installed via Cargo)
+- `hyprlock` - Screen locker
+- `swww` - Wallpaper daemon (installed via Cargo)
+- `cliphist` - Clipboard manager
+
+**Build Requirements:**
+- Rust/Cargo (for matugen and swww)
+- Build tools (build-essential, meson, cmake)
+- Development libraries (automatically installed)
+
+**Estimated Build Time:** 15-30 minutes
+
+The setup script will prompt you to build these packages automatically.
+
+---
+
+### 🛠️ Manual Installation
+
+If you prefer manual installation:
+
+1. **Install dependencies** (see list below)
+2. **Copy config files:**
+   ```bash
+   cp -r config/* ~/.config/
+   ```
+3. **Install fonts:**
+   ```bash
+   tar -xJf fonts.tar.xz -C ~/.local/share/
+   fc-cache -fv
+   ```
+4. **Install theme:**
+   ```bash
+   cp -r matugen-labwc ~/.themes/
+   ```
 
 ---
 
 
 ## Dependencies
 
-**For Arch Linux**: Run `setup.sh` to automatically install all dependencies.
+### Arch Linux Packages
 
-**For Other Distributions**: Install these packages manually:
+Run `./setup.sh` to automatically install all dependencies.
 
-`labwc`, `waybar`, `rofi`, `matugen`, `adw-gtk-theme`, `dunst`, `swww`, `polkit-gnome`, `gnome-keyring`, `wl-clipboard`, `cliphist`, `wl-clip-persist`, `swayidle`, `hyprlock`, `foot`, `imagemagick`, `ffmpegthumbnailer`, `ffmpeg`, `otf-font-awesome`, `inter-font`, `ttf-roboto`, `papirus-icon-theme`, `qt5-wayland`, `qt6-wayland`, `nm-connection-editor`, `gammastep`, `wf-recorder`, `grim`, `slurp`, `playerctl`.
+**Core Packages:**
+`labwc`, `waybar`, `rofi`, `matugen`, `dunst`, `swww`, `swayidle`, `hyprlock`, `foot`
+
+**Utilities:**
+`wl-clipboard`, `cliphist`, `wl-clip-persist`, `wf-recorder`, `grim`, `slurp`, `playerctl`, `imagemagick`, `ffmpegthumbnailer`, `ffmpeg`
+
+**System:**
+`polkit-gnome`, `gnome-keyring`, `qt5-wayland`, `qt6-wayland`, `nm-connection-editor`, `gammastep`
+
+**Fonts & Themes:**
+`otf-font-awesome`, `inter-font`, `ttf-roboto`, `papirus-icon-theme`, `adw-gtk-theme`
+
+---
+
+### Ubuntu/Debian Packages
+
+**Available in Repositories:**
+```bash
+sudo apt-get install waybar rofi dunst swayidle foot wl-clipboard \
+  wf-recorder grim slurp playerctl imagemagick ffmpegthumbnailer ffmpeg \
+  policykit-1-gnome gnome-keyring qtwayland5 qt6-wayland \
+  network-manager-gnome gammastep fonts-font-awesome fonts-inter \
+  fonts-roboto papirus-icon-theme gnome-themes-extra
+```
+
+**Needs Building from Source:**
+- **labwc** - [Build Instructions](https://github.com/labwc/labwc)
+- **matugen** - `cargo install matugen` (requires Rust)
+- **hyprlock** - [Build Instructions](https://github.com/hyprwm/hyprlock)
+- **swww** - `cargo install swww` (requires Rust)
+- **cliphist** - [Build Instructions](https://github.com/sentriz/cliphist)
+
+> **💡 Tip:** The `./setup.sh` script includes a `build-deps-ubuntu.sh` that automates building all these packages!
+
+---
+
+### 🔧 Build Dependencies (Ubuntu/Debian)
+
+If building manually, install these first:
+```bash
+sudo apt-get install build-essential meson ninja-build cmake pkg-config \
+  libwayland-dev wayland-protocols libwlroots-dev libxkbcommon-dev \
+  libcairo2-dev libpango1.0-dev libglib2.0-dev libpixman-1-dev \
+  libinput-dev libxml2-dev libdrm-dev libjson-c-dev libseat-dev \
+  scdoc git curl wget golang-go
+```
+
+**For Rust packages (matugen, swww):**
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+```
+
+---
+
+## 🔧 Troubleshooting
+
+### Rofi Dialogs Not Responding
+
+**Issue:** The setup shows a dialog but clicking doesn't work.
+
+**Solution:** Rofi dialogs are keyboard-driven:
+- Use **Arrow Keys** or **Tab** to navigate
+- Press **Enter** to select
+- Press **Escape** to cancel
+
+The setup script automatically falls back to terminal prompts if rofi isn't available.
+
+### Running Setup Inside vs Outside Labwc
+
+The `setup.sh` script behaves differently depending on where you run it:
+
+**Outside labwc (before first login):**
+- Installs packages and configurations
+- Skips interactive dialogs
+- Generates default menu
+
+**Inside labwc (after logging in):**
+- Starts background services
+- Shows interactive rofi dialogs
+- Launches wallpaper selector
+- Customizes waybar
+
+**Recommended workflow for Ubuntu:**
+1. Run `./setup.sh` once to install everything
+2. Log out and select labwc session
+3. Log in to labwc
+4. Run `./setup.sh` again for interactive customization
+
+### Manual Menu Generation
+
+If you want to regenerate the desktop menu:
+
+```bash
+# With footer:
+python3 ~/.config/labwc/menu-generator.py -o ~/.config/labwc/menu.xml
+
+# Without footer:
+python3 ~/.config/labwc/menu-generator.py -f false -o ~/.config/labwc/menu.xml
+
+# Reload labwc to see changes:
+labwc --reconfigure
+```
 
 ---
 

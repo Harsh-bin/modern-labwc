@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Modern Labwc Setup Script
+# Supports: Arch Linux, Ubuntu, Debian, and derivatives
+
 # --- Colors ---
 red='\033[0;31m'
 green='\033[0;32m'
@@ -8,93 +11,195 @@ blue='\033[0;34m'
 nc='\033[0m' # No Color
 
 # --- Config Paths ---
-source="./config"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source="$SCRIPT_DIR/config"
 dest="$HOME/.config"
-font_source="./fonts.tar.xz"
+font_source="$SCRIPT_DIR/fonts.tar.xz"
 font_dest="$HOME/.local/share"
-theme_source="./matugen-labwc"
+theme_source="$SCRIPT_DIR/matugen-labwc"
 theme_dest="$HOME/.themes"
 
-# Create a timestamped backup folder so we never overwrite previous backups
+# Create a timestamped backup folder
 timestamp=$(date +%Y%m%d-%H%M%S)
 backup_root="$HOME/.config/BACKUP"
 backup_dir="$backup_root/$timestamp"
 
-# --- Dependencies ---
-# Note: Package names here are optimized for Arch Linux
-dependencies=(
-    "imagemagick"
-    "labwc"
-    "wl-clipboard"
-    "cliphist"
-    "wl-clip-persist"
-    "waybar"
-    "rofi"
-    "ffmpegthumbnailer"
-    "ffmpeg"
-    "dunst"
-    "matugen"
-    "foot"
-    "swww"
-    "swayidle"
-    "hyprlock"
-    "qt5-wayland"
-    "qt6-wayland"
-    "nm-connection-editor"
-    "polkit-gnome"
-    "gnome-keyring"
-    "wf-recorder"
-    "grim"
-    "slurp"
-    "playerctl"
-    # Fonts & Themes
-    "otf-font-awesome"
-    "inter-font"
-    "ttf-roboto"
-    "papirus-icon-theme"
-    "adw-gtk-theme"
+# --- Distribution Detection ---
+echo -e "${blue}╔════════════════════════════════════════════════════════════╗${nc}"
+echo -e "${blue}║         Modern Labwc - Multi-Distribution Setup           ║${nc}"
+echo -e "${blue}╚════════════════════════════════════════════════════════════╝${nc}"
+echo ""
+
+# Source distribution detection script
+if [ -f "$SCRIPT_DIR/detect-distro.sh" ]; then
+    source "$SCRIPT_DIR/detect-distro.sh"
+else
+    echo -e "${red}Error: detect-distro.sh not found!${nc}"
+    exit 1
+fi
+
+echo -e "${green}Detected: $DISTRO_NAME ($DISTRO_FAMILY)${nc}"
+echo ""
+
+# --- Package Definitions ---
+# Arch Linux packages
+declare -A arch_packages=(
+    ["imagemagick"]="imagemagick"
+    ["labwc"]="labwc"
+    ["wl-clipboard"]="wl-clipboard"
+    ["cliphist"]="cliphist"
+    ["wl-clip-persist"]="wl-clip-persist"
+    ["waybar"]="waybar"
+    ["rofi"]="rofi"
+    ["ffmpegthumbnailer"]="ffmpegthumbnailer"
+    ["ffmpeg"]="ffmpeg"
+    ["dunst"]="dunst"
+    ["matugen"]="matugen"
+    ["foot"]="foot"
+    ["swww"]="swww"
+    ["swayidle"]="swayidle"
+    ["hyprlock"]="hyprlock"
+    ["qt5-wayland"]="qt5-wayland"
+    ["qt6-wayland"]="qt6-wayland"
+    ["nm-connection-editor"]="nm-connection-editor"
+    ["polkit-gnome"]="polkit-gnome"
+    ["gnome-keyring"]="gnome-keyring"
+    ["wf-recorder"]="wf-recorder"
+    ["grim"]="grim"
+    ["slurp"]="slurp"
+    ["playerctl"]="playerctl"
+    ["font-awesome"]="otf-font-awesome"
+    ["inter-font"]="inter-font"
+    ["roboto-font"]="ttf-roboto"
+    ["papirus-icon-theme"]="papirus-icon-theme"
+    ["adw-gtk-theme"]="adw-gtk-theme"
 )
+
+# Debian/Ubuntu packages
+declare -A debian_packages=(
+    ["imagemagick"]="imagemagick"
+    ["labwc"]="BUILD"  # Not in repos, needs building
+    ["wl-clipboard"]="wl-clipboard"
+    ["cliphist"]="BUILD"  # Not in repos
+    ["wl-clip-persist"]="BUILD"  # Not in repos
+    ["waybar"]="waybar"
+    ["rofi"]="rofi"
+    ["ffmpegthumbnailer"]="ffmpegthumbnailer"
+    ["ffmpeg"]="ffmpeg"
+    ["dunst"]="dunst"
+    ["matugen"]="BUILD"  # Install via cargo
+    ["foot"]="foot"
+    ["swww"]="BUILD"  # Install via cargo
+    ["swayidle"]="swayidle"
+    ["hyprlock"]="BUILD"  # Not in repos
+    ["qt5-wayland"]="qtwayland5"
+    ["qt6-wayland"]="qt6-wayland"
+    ["nm-connection-editor"]="network-manager-gnome"
+    ["polkit-gnome"]="policykit-1-gnome"
+    ["gnome-keyring"]="gnome-keyring"
+    ["wf-recorder"]="wf-recorder"
+    ["grim"]="grim"
+    ["slurp"]="slurp"
+    ["playerctl"]="playerctl"
+    ["font-awesome"]="fonts-font-awesome"
+    ["inter-font"]="fonts-inter"
+    ["roboto-font"]="fonts-roboto"
+    ["papirus-icon-theme"]="papirus-icon-theme"
+    ["adw-gtk-theme"]="gnome-themes-extra"
+)
+
+# Get package list based on distribution
+get_package_name() {
+    local pkg_key="$1"
+    if [ "$DISTRO_FAMILY" = "arch" ]; then
+        echo "${arch_packages[$pkg_key]}"
+    elif [ "$DISTRO_FAMILY" = "debian" ]; then
+        echo "${debian_packages[$pkg_key]}"
+    fi
+}
 
 # --- Dependency Checker Function ---
 check_dependencies() {    
     echo -e "${blue}[DEPENDENCY CHECK]${nc} Checking installed packages..."
     sleep 0.5
-    install_cmd="sudo pacman -S --noconfirm --needed"
-    check_cmd="pacman -Qi"
-
-    # Check for missing packages
-    missing_pkg=()    
-    for pkg in "${dependencies[@]}"; do
-        if ! pacman -Qi "$pkg" &> /dev/null; then
-            missing_pkg+=("$pkg")
+    
+    # Update package database
+    echo -e "${yellow}Updating package database...${nc}"
+    $UPDATE_CMD > /dev/null 2>&1
+    
+    missing_pkg=()
+    build_required=false
+    
+    # Check each package
+    for pkg_key in "${!arch_packages[@]}"; do
+        pkg_name=$(get_package_name "$pkg_key")
+        
+        # Skip if package needs building (handle separately)
+        if [ "$pkg_name" = "BUILD" ]; then
+            build_required=true
+            continue
+        fi
+        
+        # Check if installed
+        if [ "$DISTRO_FAMILY" = "arch" ]; then
+            if ! pacman -Qi "$pkg_name" &> /dev/null; then
+                missing_pkg+=("$pkg_name")
+            fi
+        elif [ "$DISTRO_FAMILY" = "debian" ]; then
+            if ! dpkg -l "$pkg_name" 2>/dev/null | grep -q "^ii"; then
+                missing_pkg+=("$pkg_name")
+            fi
         fi
     done
-    # If everything is installed, return
-    if [ ${#missing_pkg[@]} -eq 0 ]; then
-        echo -e "${green}All dependencies are already installed!${nc}"
-        sleep 0.5
-        return
-    fi
+    
     # Install missing packages
-    echo -e "${yellow}The following packages are missing:${nc}"
-    for pkg in "${missing_pkg[@]}"; do
-        echo -e " - $pkg"
-        sleep 0.1
-    done
-    echo ""
-    sleep 0.5
-    echo -e "${blue}Starting installation...${nc}"
-    sleep 0.5    
-    # loop through them one by one
-    for pkg in "${missing_pkg[@]}"; do
-        echo -e "Installing ${yellow}$pkg${nc}..."
-        if $install_cmd "$pkg"; then
-            echo -e "${green}Successfully installed $pkg${nc}"
-        else
-            echo -e "${red}Failed to install $pkg (Check your repos).${nc}"
-        fi
+    if [ ${#missing_pkg[@]} -eq 0 ]; then
+        echo -e "${green}All available packages are already installed!${nc}"
+    else
+        echo -e "${yellow}The following packages will be installed:${nc}"
+        for pkg in "${missing_pkg[@]}"; do
+            echo -e " - $pkg"
+        done
+        echo ""
         sleep 0.5
-    done    
+        echo -e "${blue}Starting installation...${nc}"
+        sleep 0.5
+        
+        for pkg in "${missing_pkg[@]}"; do
+            echo -e "Installing ${yellow}$pkg${nc}..."
+            if $INSTALL_CMD "$pkg" > /dev/null 2>&1; then
+                echo -e "${green}✓ Successfully installed $pkg${nc}"
+            else
+                echo -e "${red}✗ Failed to install $pkg${nc}"
+            fi
+        done
+    fi
+    
+    # Handle packages that need building (Debian/Ubuntu only)
+    if [ "$build_required" = true ] && [ "$DISTRO_FAMILY" = "debian" ]; then
+        echo ""
+        echo -e "${yellow}╔════════════════════════════════════════════════════════════╗${nc}"
+        echo -e "${yellow}║  Some packages need to be built from source               ║${nc}"
+        echo -e "${yellow}║  (labwc, matugen, hyprlock, swww, cliphist)               ║${nc}"
+        echo -e "${yellow}║  This will take approximately 15-30 minutes               ║${nc}"
+        echo -e "${yellow}╚════════════════════════════════════════════════════════════╝${nc}"
+        echo ""
+        read -p "Build required packages now? (y/n): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            if [ -f "$SCRIPT_DIR/build-deps-ubuntu.sh" ]; then
+                bash "$SCRIPT_DIR/build-deps-ubuntu.sh"
+            else
+                echo -e "${red}Error: build-deps-ubuntu.sh not found!${nc}"
+                echo -e "${yellow}Please build the following manually:${nc}"
+                echo -e " - labwc, matugen, hyprlock, swww, cliphist"
+            fi
+        else
+            echo -e "${yellow}Skipping build. You'll need to install these manually:${nc}"
+            echo -e " - labwc, matugen, hyprlock, swww, cliphist"
+        fi
+    fi
+    
     echo -e "${green}Dependency check finished.${nc}"
     echo "-------------------------------------------------"
     sleep 0.5
@@ -232,6 +337,7 @@ sleep 1
 generate_menu() {
 echo "-------------------------------------------------"
 echo -e "${yellow}Generating Desktop Menu...${nc}"
+echo -e "${blue}Note: If using rofi, navigate with Arrow Keys/Tab and press Enter to select${nc}"
 bash "$HOME/.config/labwc/menu-generator.sh"
 }
 
