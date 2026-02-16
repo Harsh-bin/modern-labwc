@@ -1,0 +1,21 @@
+:root {
+    --ui-radius: 12px;
+    --image-radius: 8px;
+    --button-radius: 99px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --background-main: #15161e;
+    --background-secondary: #1a1b26;
+    --border-color: #33467c;
+    --text-color-primary: #c0caf5;
+    --text-color-primary-rgb: #c0caf5;
+    --text-color-secondary: #c0caf5;
+    --button-background: #33467c;
+    --text-color-on-accent: #c0caf5;
+    --button-secondary-bg: #1a1b26;
+    --button-secondary-text: #c0caf5;
+    --background-danger: #f7768e;
+    --text-color-danger: #c0caf5;
+    --button-danger-bg: #f7768e;
+    --button-danger-text: #c0caf5;
+}

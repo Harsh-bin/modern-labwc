@@ -1,0 +1,99 @@
+/***** Configuration *****/
+configuration {
+    show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+/* Import your colors */
+@import "~/.config/rofi/shared/colors.rasi"
+
+/***** Main Window *****/
+window {
+    location:                    northeast;
+    anchor:                      center;
+    width:                       300px;
+    height:                      400px;
+    x-offset:                    -110px;
+    y-offset:                    5px;
+    background-image:            url("~/.config/rofi/nowplaying/album_art.png", height);    
+    border-radius:               15px;
+    border:                      1px;
+    border-color:                @hover;    
+    cursor:                      "default"; 
+    background-color:            @background; 
+}
+
+/***** Main Container (Overlay) *****/
+mainbox {
+    background-color:                  transparent;
+    orientation:                 vertical;
+    spacing:                     0px;
+    padding:                     20px; 
+    background-image:      linear-gradient(135deg, rgba(255,255,255,95%), rgba(240,240,240,70%), rgba(255,255,255,95%));
+    children:                    [ "textbox-title", "textbox-custom", "listview" ];
+}
+ 
+textbox-title {
+    expand:                      false;
+    background-color:            transparent;
+    text-color:                  #000000;
+    horizontal-align:            0.5;
+    str:                         "  Now Playing"; 
+    font:                        "JetBrains Mono Nerd Font Bold 14";
+    padding:                     0px 0px 10px 0px;
+}
+
+/***** Middle: Song Info *****/
+textbox-custom {
+    expand:                      true;       
+    background-color:            transparent;  
+    border-radius:               20px;
+    border:                      0px;
+    border-color:                @selected;
+    margin:                      0px 0px 10px 0px;
+    padding:                     20px; 
+    text-color:                  #000000;
+    vertical-align:              0.5;
+    horizontal-align:            0.5; 
+    markup:                      true;     
+    font:                        "JetBrains Mono Nerd Font 14";
+}
+
+/*****-----(Buttons) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       1;
+    dynamic:                     true;
+    reverse:                     false;    
+    spacing:                     15px;
+    background-color:            transparent;
+    cursor:                      "default";
+    expand:                      false; 
+}
+
+element {
+    enabled:                     true;
+    padding:                     5px;
+    border-radius:               100%; 
+    cursor:                      pointer;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+}
+
+element selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    font:                        "JetBrains Mono Nerd Font 16";
+}

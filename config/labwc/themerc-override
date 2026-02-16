@@ -2,7 +2,7 @@
 # General Settings
 # ------------------
 border.width: 1
-border.color: #f6bc7080
+border.color: #6e5d0e33
 padding.height: 4
 corner.radius: 0
 window.titlebar.padding.height: 2
@@ -19,29 +19,30 @@ window.button.spacing: 0
 # ---------------------
 # Active Window
 # ---------------------
-window.active.title.bg.color: #18120c
-window.active.label.text.color: #ede0d4
+window.active.title.bg.color: #fff9ee
+window.active.label.text.color: #1e1b13
 
 
 # ----------------------
 # Inactive Window
 # ----------------------
-window.inactive.title.bg.color: #18120c
-window.inactive.label.text.color: #ede0d4
+window.inactive.title.bg.color: #fff9ee
+window.inactive.label.text.color: #1e1b13
 
 # -----------------------
 # Menu
 # -----------------------
-menu.items.bg.color: #18120c
-menu.items.text.color: #ede0d4
-menu.items.active.bg.color: #643f00
-menu.items.active.text.color: #ede0d4
+menu.items.bg.color: #fff9ee
+menu.items.text.color: #1e1b13
+menu.items.active.bg.color: #f9e287
+#menu.items.active.bg.color: #e9e2d4
+menu.items.active.text.color: #1e1b13
 menu.border.width: 1
-menu.border.color: #f6bc7090
+menu.border.color: #6e5d0e33
 menu.separator.width: 1
 menu.separator.padding.width: 6
 menu.separator.padding.height: 3
-menu.separator.color: #f6bc70
+menu.separator.color: #6e5d0e
 menu.items.padding.x: 6
 menu.items.padding.y: 4
 menu.width.min: 140
@@ -52,8 +53,8 @@ menu.overlap.y: 0
 # ----------------------------
 # On-Screen Display (OSD)
 # ----------------------------
-osd.bg.color: #18120c
-osd.label.text.color: #f6bc70
+osd.bg.color: #fff9ee
+osd.label.text.color: #6e5d0e
 osd.border.width: 1
 osd.window-switcher.width: 800
 osd.window-switcher.padding: 8
@@ -61,9 +62,9 @@ osd.window-switcher.item.padding.x: 12
 osd.window-switcher.item.padding.y: 12
 osd.window-switcher.item.active.border.width: 1
 osd.window-switcher.preview.border.width: 2
-osd.window-switcher.preview.border.color: #f6bc70
+osd.window-switcher.preview.border.color: #6e5d0e
 osd.workspace-switcher.boxes.width: 150
 osd.workspace-switcher.boxes.height: 40
 osd.workspace-switcher.boxes.border.width: 1
-snapping.overlay.edge.bg.color: #f6bc7080
-snapping.overlay.region.bg.color: #f6bc7080
+snapping.overlay.edge.bg.color: #6e5d0e80
+snapping.overlay.region.bg.color: #6e5d0e80

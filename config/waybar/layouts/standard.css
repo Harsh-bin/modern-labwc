@@ -15,7 +15,7 @@ window#waybar {
 
 tooltip {
     background-color: @bar_bg;
-    border: 1px solid @border_color;
+    border: 1px solid alpha(@hover_bg, 0.2);
     border-radius: 8px;
 }
 tooltip label {
@@ -24,12 +24,11 @@ tooltip label {
 }
 
 /* --- Modules: Base --- */
+#custom-data-monitor,
 #clock,
+#custom-clock,
 #network,
 #custom-todo,
-#custom-countdown,
-#backlight,
-#pulseaudio,
 #memory,
 #custom-clip,
 #custom-snip,
@@ -38,24 +37,29 @@ tooltip label {
 #tray,
 #idle_inhibitor,
 #custom-power,
+#custom-notification,
 #custom-launcher {
     background: @module_bg;
     color: @module_fg;
-    padding: 0px 13px;
+    padding: 0px 10px;
     margin: 4px 2px 4px 2px;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 /* --- Modules: Strip --- */
+#backlight,
+#pulseaudio,
 #custom-chrome,
 #custom-terminal,
 #custom-code,
 #custom-music,
-#custom-thunar {
+#custom-thunar,
+#custom-timer,
+#custom-countdown {
     background: @module_bg;
     color: @module_fg;
-    padding: 0px 13px;
+    padding: 0px 10px;
     margin-top: 4px;
     margin-bottom: 4px;
     margin-right: 0px;
@@ -63,23 +67,46 @@ tooltip label {
     transition: all 0.3s ease;
 }
 
-#custom-chrome {
+#custom-notification {
+   padding-left: 6px;
+}
+
+#custom-countdown {
+    margin-left: 2px;
+}
+
+#custom-chrome,
+#pulseaudio,
+#custom-timer {
     margin-left: 2px;
     border-radius: 8px 0 0 8px;
 }
 
-#custom-thunar {
+#custom-thunar,
+#backlight,
+#custom-countdown {
     margin-right: 4px;
     border-radius: 0 8px 8px 0;
 }
 
+#pulseaudio {
+    margin-right: 0px;
+    padding-right: 8px; 
+}
+
+#backlight {
+    margin-left: 0px;  
+    padding-left: 8px; 
+}
+
+
 #custom-launcher {
-    color: @launcher;
+    color: @primary;
     font-weight: bold;
 }
 
 #tray {
-    background: @special;
+    background: @tray;
 }
 
 #custom-power {
@@ -92,7 +119,7 @@ tooltip label {
 #keyboard-state label.locked {
     background: @special;
     color: @module_fg; 
-    padding: 0px 12px;
+    padding: 0px 10px;
     margin: 4px 2px 4px 2px;	
     border-radius: 8px;
 }
@@ -102,7 +129,9 @@ tooltip label {
 }
 
 /* --- Hover Effects --- */
+#custom-data-monitor:hover,
 #clock:hover,
+#custom-clock:hover,
 #network:hover,
 #backlight:hover,
 #pulseaudio:hover,
@@ -117,13 +146,15 @@ tooltip label {
 #custom-terminal:hover,
 #custom-code:hover,
 #custom-music:hover,
-#custom-thunar:hover {
+#custom-thunar:hover,
+#custom-notification:hover {
     background: @hover_bg;
     color: @hover_fg;
 }
 
 #custom-todo:hover,
-#custom-countdown:hover {
+#custom-countdown:hover,
+#custom-timer:hover {
     background: @special;
     color: @special_fg;
 }
@@ -156,4 +187,60 @@ tooltip label {
 #taskbar button:hover {
     background: alpha(@hover_bg, 0.15);
     border-bottom-color: alpha(@hover_bg, 0.65);
+}
+
+/* -----------------------------------------------------------------------------
+ * STATUS & ALERTS
+ * -------------------------------------------------------------------------- */
+
+#custom-timer {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-weight: bold;
+}
+#custom-timer.running {
+    color: @primary;
+}
+#custom-timer.running:hover {
+    background: @hover_bg;
+    color: @hover_fg;
+}
+#custom-timer.paused {
+    color: @power;
+}
+
+/* Pending Tasks */
+#custom-todo.pending {
+    color: @power;
+}
+#custom-todo.pending:hover,
+#custom-timer.paused:hover {
+    background: @power;
+    color: @bar_bg;
+}
+
+/* Critical Animations */
+#custom-timer.expired,
+#custom-countdown.expired {
+    background-color: @power;
+    color: @bar_bg;            
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink-critical {
+    0% {
+        background-color: @power;
+        color: @bar_bg;
+    }
+    50% {
+        background-color: @module_bg;
+        color: @power;
+    }
+    100% {
+        background-color: @power;
+        color: @bar_bg;
+    }
 }

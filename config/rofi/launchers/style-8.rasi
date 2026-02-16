@@ -10,6 +10,9 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 true;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -31,7 +34,7 @@ window {
     enabled:                     true;
     border-radius:               25px;
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -67,7 +70,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         "";
     padding:                     12px 15px 12px 12px;
     border-radius:               100%;
     background-color:            @background-alt;

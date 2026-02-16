@@ -1,17 +1,24 @@
 # Desktop Login sound
-paplay ~/.config/labwc/sound/desktop-login.oga >/dev/null 2>&1 &
+aplay -q ~/.config/labwc/sound/desktop-login.wav >/dev/null 2>&1 &
 
 # Device plugged audio
 bash ~/.config/labwc/device-monitor.sh >/dev/null 2>&1 &
 
-# Set background 
-swww-daemon >/dev/null 2>&1 &
+# Alarm Daemon
+~/.config/waybar/scripts/clock_calendar/alarm/alarm.sh start-daemon
+
+# Set background, prefer awww if available as it has better transitions 
+if command -v awww >/dev/null 2>&1; then
+	awww-daemon >/dev/null 2>&1 &
+else
+	swww-daemon >/dev/null 2>&1 &
+fi
 
 # Keyring
 /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh >/dev/null 2>&1 &
 
 # Polkit 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >/dev/null 2>&1 &
+/usr/bin/lxqt-policykit-agent >/dev/null 2>&1 &
 
 # Gtk Theme Refresh
 bash ~/.config/labwc/gtk.sh >/dev/null 2>&1 &
@@ -25,6 +32,7 @@ wl-paste --type image --watch cliphist store &
 (sleep 0.5; waybar --log-level off >/dev/null 2>&1 &)
 
 # Notification 
+# To use swaync replace dunst with swaync
 dunst >/dev/null 2>&1 &
 
 # Idle device manager

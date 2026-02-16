@@ -10,9 +10,9 @@ echo "Paused all media players."
 # Get the current brightness of screen
 current_val=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
 
-if [ "$current_val" -gt "0" ] ; then
+if [ "$current_val" -gt "0" ]; then
    "$HOME/.config/labwc/idle/brightness_ctrl.sh" --fade-out &
-else 
+else
    echo "Screen brightness already 0. Not fadding screen.."
 fi
 

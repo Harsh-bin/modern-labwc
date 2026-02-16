@@ -1,0 +1,370 @@
+/* --- Import Colors--*/
+@import "colors/wallpaper.css";
+
+
+/* --- SCROLLBAR REMOVE --- */
+scrollbar,
+scrollbar slider,
+scrollbar trough {
+    min-height: 0px;
+    min-width: 0px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+scrolledwindow>viewport.frame {
+    border: none;
+}
+.control-center {
+    font-family: sans-serif;
+    background: var(--background-main);
+    color: var(--text-color-secondary);
+    border-radius: var(--ui-radius);
+    border: 1px solid var(--border-color);
+    opacity: 1;
+    padding: 2px 0px;
+}
+.notification-window,
+.blank-window {
+    background: transparent;
+}
+
+.blank-window label {
+    color: var(--text-color-secondary);
+    font-size: 12px;
+    font-style: normal;
+}
+
+/* --- Widget Title --- */
+.widget-title {
+    background: transparent;
+    padding: 8px 12px;
+    border-radius: var(--ui-radius);
+    transition: var(--transition);
+}
+
+.widget-title label {
+    color: var(--text-color-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.widget-title button {
+    border: 1px solid var(--border-color);
+    border-radius: var(--button-radius);
+    color: var(--text-color-primary);
+    transition: var(--transition);
+}
+
+.widget-title button:hover {
+    color: var(--button-background);
+}
+
+/* --- Do Not Disturb (DND) Widget --- */
+
+.widget-dnd {
+    background: transparent;
+    padding: 8px 12px;
+    border-radius: var(--ui-radius);
+    transition: var(--transition);
+}
+
+.widget-dnd label {
+    color: var(--text-color-primary);
+    font-size: 12px;
+    font-weight: 600;
+
+}
+
+.widget-dnd switch {
+    background: var(--background-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--button-radius);
+    margin-right: 12px;
+}
+
+.widget-dnd switch:checked {
+    background: var(--button-background);
+}
+
+.widget-dnd switch slider {
+    background: var(--text-color-secondary);
+    border-radius: var(--button-radius);
+    min-width: 12px;
+    min-height: 12px;
+}
+
+.widget-dnd switch:checked slider {
+    background: var(--text-color-on-accent);
+}
+
+/* --- MPRIS (Media Player) Widget --- */
+
+.widget-mpris {
+    background: transparent;
+    margin: 0px;
+    padding: 8px 12px;
+}
+
+.widget-mpris:hover {
+    transition: var(--transition);
+    transform: scale(1.04);
+}
+
+.widget-mpris label {
+    color: #ffffff;
+}
+ 
+.mpris-album-art {
+    border-radius: var(--image-radius);
+    background-size: cover;
+    background-position: center;
+}
+
+.widget-mpris button {
+    color: #ffffff;
+    border-radius: var(--button-radius);
+    margin-top: 5px;
+    border: 1px solid transparent;
+    border-radius: var(--button-radius);
+    transition: var(--transition);
+}
+ 
+/*--- BUTTONS-GRID --- */
+.widget-buttons-grid {
+    margin: 0px;
+    background: transparent;
+    padding: 2px 6px;
+}
+
+.widget-buttons-grid>flowbox {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild {
+    min-width: 0px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+    background-color: var(--background-secondary);
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--ui-radius);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+    margin: 6px;
+    transition: var(--transition);
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+    background-color: rgba(var(--text-color-primary-rgb), 0.1);
+    border-color: rgba(var(--text-color-primary-rgb), 0.3);
+    transform: translateY(-2px);
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:active {
+    background-color: rgba(var(--text-color-primary-rgb), 0.15);
+    transform: scale(0.97);
+}
+
+/* --- MAIN CONTAINER --- */
+.widget-notifications {
+    background: var(--background-secondary);
+    margin: 10px;
+    padding: 0;
+}
+
+list,
+listview,
+row,
+listview row,
+listview row:selected,
+listview row:hover,
+listview row:focus,
+listview row:active {
+background-color: transparent;
+background-image: none;
+box-shadow: none;
+outline: none;
+padding: 4px;
+}
+
+/* --- NOTIFICATION ROW --- */
+.notification-row {
+    outline: none;
+    background: transparent;
+    margin: 0px;
+    padding: 0px;
+    transition: all 200ms ease-in-out;
+}
+
+/* --- THE NOTIFICATION CARD --- */
+.notification {
+    min-height: 30px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 200ms ease;
+}
+
+/* Reset inner elements */
+.notification>box,
+.notification box,
+.notification eventbox,
+.notification grid,
+.notification revealer {
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+}
+
+.notification .icon {
+    margin-right: 16px;
+    padding: 4px;
+}
+
+/* --- HOVER EFFECTS --- */
+.notification:hover {
+    transition: var(--transition);
+    transform: scale(1.01);
+}
+
+/* --- BASE NOTIFICATION STYLES (low) --- */
+.notification.low {
+    opacity: 1;
+    background: var(--background-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-primary);
+}
+
+/* --- BASE NOTIFICATION STYLES (Normal) --- */
+.notification.normal,
+.notification.critical {
+    opacity: 1;
+    background: var(--background-main); 
+    border: 1px solid var(--border-color);
+    color: var(--text-color-primary); 
+}
+
+/* --- CRITICAL NOTIFICATION STYLES --- 
+.notification.critical {
+    background: var(--background-danger);
+    color: var(--text-color-danger);
+    border: 1px solid var(--text-color-danger);
+    animation: pulse-critical 2s infinite;
+}
+*/
+.notification.critical {
+    border: 1px solid var(--background-danger);
+    animation: pulse-critical 2s infinite;
+}
+
+/* --- TEXT STYLING (Summary/Title) --- */
+.notification .summary {
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: none;
+    padding: 5px; 
+    margin-right: 30px;
+    color: var(--text-color-primary); 
+}
+
+.notification.critical .summary,
+.notification.critical .body {
+    color: var(--background-danger);
+}
+
+/* --- TEXT STYLING (Body) --- */
+.notification .body {
+    font-size: 13px;
+    padding-left: 5px;
+    text-shadow: none;
+    line-height: 1.4em;
+    color: var(--text-color-primary);
+    opacity: 0.9;
+}
+
+/* --- IMAGE / ICON STYLING --- */
+.notification .image,
+.notification image {
+    border-radius: var(--image-radius);
+}
+
+
+/* --- TIME STYLING --- */
+.notification .time {
+    font-size: 11px;
+    color: inherit; 
+    opacity: 0.6;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+/* --- ACTIONS / BUTTONS --- */
+.notification .notification-action {
+    background: color-mix(in srgb, var(--button-secondary-bg), 30% transparent);
+    border-radius: var(--ui-radius);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.notification .notification-action:hover {
+    background: color-mix(in srgb, var(--button-background), 10% transparent);
+    font-weight: 600;
+    transition: var(--transition);
+    transform: translateY(-1px);
+}
+
+.notification-action label {
+    color: var(--button-secondary-text); 
+} 
+
+.notification-action:hover label {
+    color: var(--text-color-on-accent); 
+}
+ 
+.notification.critical .notification-action {
+    background: color-mix(in srgb, var(--button-danger-bg), 30% transparent ); 
+    border: 1px solid transparent;     
+    color: var(--button-danger-text);
+}
+
+.notification.critical .notification-action:hover {
+    background: color-mix(in srgb, var(--button-danger-bg), 10% transparent ); 
+    border: 1px solid transparent;
+}
+
+.notification.critical .notification-action label {
+    color: var(--background-danger); 
+}
+
+.notification.critical .notification-action:hover label {
+    color: var(--text-color-danger); 
+}
+
+/* --- CLOSE BUTTON --- */
+.close-button {
+    color: transparent;
+    background: transparent;
+}
+
+/* --- CRITICAL PULSE ANIMATION --- */
+@keyframes pulse-critical {
+    0% {
+        box-shadow: 0 0 0 0 var(--background-danger);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px transparent;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+}

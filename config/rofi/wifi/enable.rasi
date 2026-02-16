@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -19,7 +22,7 @@ window {
     padding:                     0px;
     border:                      1px;
     border-radius:               12px;
-    border-color:                @selected;
+    border-color:                @hover;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -72,7 +75,7 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-element selected.normal {
-    background-color:            @selected;
-    text-color:                  @background;
+element.selected  {
+    background-color:            @hover;
+    text-color:                  @foreground;
 }

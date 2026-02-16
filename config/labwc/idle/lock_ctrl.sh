@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Prevents double locking when device goes to sleep
-if pgrep -x "hyprlock" > /dev/null; then
-    echo "Session Already Locked" 
-    exit 0       
+if pgrep -x "hyprlock" >/dev/null; then
+    echo "Session Already Locked"
+    exit 0
 else
     echo "Locking Session"
     # start nowplaying.sh so that everytime ui is clean and updated

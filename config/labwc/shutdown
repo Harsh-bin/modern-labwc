@@ -1,3 +1,5 @@
 pkill -f device-monitor.sh
 killall udevadm monitor
 killall gammastep
+pkill -f pin_notes.sh
+pkill -f inotifywait

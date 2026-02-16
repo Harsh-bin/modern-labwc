@@ -1,0 +1,101 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    x-offset:                    -50px;
+    y-offset:                    5px;
+    width:                       650px;
+    background-color:            transparent;
+    border:                      0px;
+    children:                    [ "mainbox" ];
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    background-color:            transparent;
+    orientation:                 vertical;
+    spacing:                     15px;
+    padding:                     0px;
+    children:                    [ "input-wrapper", "listview" ];
+}
+
+/*****----- Top Box (Message + Input) -----*****/
+
+input-wrapper {
+    orientation:                 vertical;
+    expand:                      false; 
+    padding:                     20px;
+    spacing:                     10px;
+    background-color:            @background;
+    border-radius:               12px;
+    border:                      1px;
+    border-color:                @hover; 
+    children:                    [ "message"];
+}
+
+/*****----- Message Text -----*****/
+message {
+    padding:                     0px 0px 10px 0px; 
+    margin:                      0px;
+    background-color:            transparent;
+    border:                      0px;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    markup:                      true;
+}
+
+
+/*****----- Listview (The Buttons) -----*****/
+listview {
+    columns:                     3;
+    lines:                       2;
+    cycle:                       true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    spacing:                     15px;
+    fixed-height:                true;
+    fixed-columns:               true;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    border:                      0px;
+}
+
+element {
+    padding:                     12px 10px;
+    border-radius:               12px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+    border:                      1px;
+    border-color:                @hover;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}
+
+element selected {
+    background-color:            @selected;
+    text-color:                  @background;
+    border-color:                @hover;
+}

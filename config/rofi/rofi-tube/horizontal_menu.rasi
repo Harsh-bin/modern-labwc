@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
 	show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -12,10 +15,10 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    width:                       300px;
+    width:                       450px;
     border-radius:               8px;
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     padding:                     10px;
     background-color:            @background;
     children:                    [ "mainbox" ];
@@ -36,49 +39,49 @@ textbox {
     background-color:            transparent;
     text-color:                  @foreground;
     vertical-align:              0.5;
-    horizontal-align:            0.5; 
+    horizontal-align:            0.5;
     markup:                      true;
 }
 
 /*****----- Listview -----*****/
 listview {
-    columns:                     1;
-    lines:                       7;
+    columns:                     2;
+    lines:                       1;
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
     spacing:                     8px;
     padding:                     20px;
-    border-radius:               8px;    
-    background-color:            @background-alt;
-    scrollbar:                   true;
-}
-
-scrollbar {
-    handle-width:                3px ;
-    handle-color:                @foreground;
-    background-color:            @background-alt;
+    background-color:            inherit;
+    text-color:                  @foreground;
 }
 
 /*****----- Elements -----*****/
 element {
     padding:                     10px;
     border-radius:               8px;
-    background-color:            transparent;
+    background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 
-element-text {
-    background-color:            inherit;
+element-icon {
+    background-color:            transparent;
     text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  @foreground;
     horizontal-align:            0.5;
     vertical-align:              0.5;
 }
 
 element selected {
-    background-color:            @selected;
-    text-color:                  @background;
+    background-color:            @hover;
+    text-color:                  @foreground;
 }
 
 inputbar {

@@ -12,14 +12,14 @@ main_choice=$(echo -e "$main_options" | rofi -dmenu -mesg "<b>Rofi Customize</b>
 
 # --- Handle the choice with a case statement ---
 case "$main_choice" in
-    "Layout")
-        "$launcher_style_changer"
-        ;;
+"Layout")
+    "$launcher_style_changer"
+    ;;
 
-    "Color_scheme")
-        "$color_scheme_changer"
-        ;;
-    *)
+"Color_scheme")
+    "$color_scheme_changer"
+    ;;
+*)
     exit 0
-        ;;
+    ;;
 esac

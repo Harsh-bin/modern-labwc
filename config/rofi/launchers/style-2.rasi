@@ -17,6 +17,9 @@ configuration {
     display-window:             "   Windows";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -66,7 +69,7 @@ window {
     padding:                     0px;
     border:                      1px solid;
     border-radius:               10px;
-    border-color:                @border-colour;
+    border-color:                @hover;
     cursor:                      "default";
     /* Backgroud Colors */
     background-color:            @background-colour;

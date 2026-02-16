@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
-	show-icons: 		true; 
+	show-icons: 		true;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary"; 
 }
 
 /*****----- Global Properties -----*****/
@@ -18,7 +21,7 @@ window {
     y-offset:                    0px; 
     enabled:                     true;
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     border-radius:               6px; 
     padding: 			         28px;
     cursor:                      "default";

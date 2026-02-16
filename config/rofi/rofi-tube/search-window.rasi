@@ -1,0 +1,122 @@
+/*****----- Configuration -----*****/
+
+configuration {
+	modi:                       "drun";
+    show-icons:                 true;
+	drun-display-format:        "{name}";  
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       600px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      1px solid;
+    border-radius:               14px;
+    border-color:                @hover;
+    background-color:            @background;
+    cursor:                      "default";
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                @selected;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px 0px 10px 0px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               14px;
+    border-color:                @selected;
+    background-color:            @selected;
+    text-color:                  @background;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "::";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder-color:           inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    columns:                     1;
+    lines:                       7;
+    cycle:                       false; 
+    layout:                      vertical;
+    spacing:                     0px;
+    padding:                     0px;
+    border-radius:               8px;    
+    background-color:            @background-alt;
+}
+ 
+/*****----- Elements -----*****/
+element {
+    padding:                     0px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    horizontal-align:            0;
+    vertical-align:              0.5;
+}
+
+element.selected  {
+    background-color:            @hover;
+    text-color:                  @foreground;
+}
+element-icon {
+    padding:                     4px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        64px;
+}
+ 
+

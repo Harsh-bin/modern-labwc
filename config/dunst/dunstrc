@@ -8,9 +8,9 @@
     vertical_alignment = "center"
     ellipsize = "middle"
     offset = (30,30)
-    padding = 15
-    horizontal_padding = 10
-    text_icon_padding = 15
+    padding = 16   
+    horizontal_padding = 16
+    text_icon_padding = 16
     icon_position = "left"
     min_icon_size = 64
     max_icon_size = 64
@@ -23,17 +23,17 @@
     progress_bar_max_width = 400
     separator_height = 2
     frame_width = 1
-    frame_color = "#f6bc70"
-    separator_color = "#f6bc70"
+    frame_color = "#6e5d0e33"
+    separator_color = "#6e5d0e"
     corner_radius = 12
-    gap_size = 8
-    line_height = 0
+    gap_size = 10
+    line_height = 4
     notification_limit = 0
     idle_threshold = 120
     history_length = 20
     show_age_threshold = 60
     markup = "full"
-    font = "Inter 10"
+    font = "Inter 13px"
     format = "<b>%s</b>\n%b"
     word_wrap = "yes"
     sort = "yes"
@@ -49,26 +49,26 @@
     force_xwayland = false
     force_xinerama = false
     mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_middle_click = do_action, close_all
+    mouse_right_click = do_action
 
 [experimental]
     per_monitor_dpi = false
 
 [urgency_low]
     timeout = 3
-    background = "#18120c"
-    foreground = "#ede0d4"
-    highlight = "#643f00"
+    background = "#fff9ee"
+    foreground = "#1e1b13"
+    highlight = "#6e5d0e"
 [urgency_normal]
     timeout = 6
-    background = "#18120c"
-    foreground = "#ede0d4"
-    highlight = "#643f00"
+    background = "#fff9ee"
+    foreground = "#1e1b13"
+    highlight = "#6e5d0e"
 [urgency_critical]
     timeout = 0
-    background = "#18120c"
-    foreground = "#ede0d4"
-    highlight = "#ffb4ab"
+    background = "#fff9ee"
+    foreground = "#ba1a1a"
+    highlight = "#ba1a1a"
 
 

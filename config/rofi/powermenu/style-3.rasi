@@ -10,6 +10,9 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -33,7 +36,7 @@ window {
     padding:                     0px;
     border:                      1px solid;
     border-radius:               15px;
-    border-color:                @selected;
+    border-color:                @hover;
     cursor:                      "default";
     background-color:            @background;
 }

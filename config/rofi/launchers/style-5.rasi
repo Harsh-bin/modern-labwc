@@ -13,6 +13,9 @@ configuration {
     show-icons:                 true;
     display-drun:               "Applications";
 	drun-display-format:        "{name}";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -34,7 +37,7 @@ window {
     padding:                     0px;
     border:                      1px solid;
     border-radius:               16px;
-    border-color:                @selected;
+    border-color:                @hover;
     background-color:            @background;
     cursor:                      "default";
 }

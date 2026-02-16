@@ -1,0 +1,22 @@
+{
+    "view": "stopwatch",
+    "stopwatch": {
+        "status": "stopped",
+        "start_ts": 1771238778.4452791,
+        "accumulated": 0
+    },
+    "countdown": {
+        "status": "stopped",
+        "start_ts": 1771238805.1203327,
+        "total_duration": 0,
+        "remaining": 0
+    },
+    "pomodoro": {
+        "status": "stopped",
+        "start_ts": 1771238810.002861,
+        "remaining": 0,
+        "current_phase": "break",
+        "work_duration": 5,
+        "break_duration": 3
+    }
+}

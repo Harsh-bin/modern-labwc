@@ -12,6 +12,8 @@ source="./config"
 dest="$HOME/.config"
 font_source="./fonts.tar.xz"
 font_dest="$HOME/.local/share"
+cursor_source="./Bibata-Modern-Ice.tar.xz"
+cursor_dest="$HOME/.local/share/icons"
 theme_source="./matugen-labwc"
 theme_dest="$HOME/.themes"
 
@@ -39,14 +41,31 @@ dependencies=(
     "swayidle"
     "hyprlock"
     "qt5-wayland"
+    "qt5ct"
+    "qt6ct"
     "qt6-wayland"
     "nm-connection-editor"
-    "polkit-gnome"
+    "lxqt-policykit" # removed gnome polkit
     "gnome-keyring"
     "wf-recorder"
     "grim"
+    "gammastep"
+    "mpv-mpris"
     "slurp"
     "playerctl"
+    "pavucontrol"
+    "pamixer"
+    "brightnessctl"
+    "xdg-desktop-portal"
+    "xdg-desktop-portal-wlr"
+    "thunar"
+    "xfce4-taskmanager"
+    "jq"
+    "netcat"          # For rofi-tube vlc control
+    "python-watchdog" # For alarm daemon
+    "alsa-utils"      # needed for "aplay" command used in scripts
+    "swayimg"         # for screenshot tool
+
     # Fonts & Themes
     "otf-font-awesome"
     "inter-font"
@@ -56,16 +75,16 @@ dependencies=(
 )
 
 # --- Dependency Checker Function ---
-check_dependencies() {    
+check_dependencies() {
     echo -e "${blue}[DEPENDENCY CHECK]${nc} Checking installed packages..."
     sleep 0.5
     install_cmd="sudo pacman -S --noconfirm --needed"
     check_cmd="pacman -Qi"
 
     # Check for missing packages
-    missing_pkg=()    
+    missing_pkg=()
     for pkg in "${dependencies[@]}"; do
-        if ! pacman -Qi "$pkg" &> /dev/null; then
+        if ! pacman -Qi "$pkg" &>/dev/null; then
             missing_pkg+=("$pkg")
         fi
     done
@@ -84,7 +103,7 @@ check_dependencies() {
     echo ""
     sleep 0.5
     echo -e "${blue}Starting installation...${nc}"
-    sleep 0.5    
+    sleep 0.5
     # loop through them one by one
     for pkg in "${missing_pkg[@]}"; do
         echo -e "Installing ${yellow}$pkg${nc}..."
@@ -94,7 +113,7 @@ check_dependencies() {
             echo -e "${red}Failed to install $pkg (Check your repos).${nc}"
         fi
         sleep 0.5
-    done    
+    done
     echo -e "${green}Dependency check finished.${nc}"
     echo "-------------------------------------------------"
     sleep 0.5
@@ -136,6 +155,8 @@ echo "-------------------------------------------------"
 sleep 0.5
 
 # --- Config Copy Section ---
+# Make sure config directory exist
+mkdir -p "$dest"
 echo -e "${yellow}Preparing to copy configurations...${nc}"
 sleep 0.5
 # Make .sh files executable inside source before copying
@@ -150,30 +171,39 @@ echo "-------------------------------------------------"
 sleep 0.5
 
 # --- Font Installation Section ---
-mkdir -p "$font_dest"    
+mkdir -p "$font_dest"
 echo -e "Extracting fonts to ${yellow}$font_dest${nc}..."
 tar -xJf "$font_source" -C "$font_dest"
-sleep 0.5    
+sleep 0.5
 echo -e "${blue}Updating font cache (this may take a moment)...${nc}"
-fc-cache -fv > /dev/null 2>&1
+fc-cache -fv >/dev/null 2>&1
 echo -e "${green}Fonts installed and cache updated.${nc}"
 echo "-------------------------------------------------"
 sleep 0.5
 
+# --- Cursor Installation Section ---
+mkdir -p "$cursor_dest"
+echo -e "Extracting cursor theme to ${yellow}$cursor_dest${nc}..."
+tar -xJf "$cursor_source" -C "$cursor_dest"
+sleep 0.5
+echo -e "${green}Cursor theme installed.${nc}"
+echo "-------------------------------------------------"
+sleep 0.5
+
 # --- Theme Installation Section ---
-mkdir -p "$theme_dest"    
+mkdir -p "$theme_dest"
 echo -e "Copying labwc-theme to ${yellow}$theme_dest${nc}..."
 cp -r "$theme_source" "$theme_dest/"
-sleep 0.5    
+sleep 0.5
 echo -e "${green}Themes copied successfully.${nc}"
 echo "-------------------------------------------------"
 sleep 0.5
 
-# --- Add user to groups 
+# --- Add user to groups
 echo -e "${red}Adding user to groups...${nc}"
 sleep 0.5
 user=$(whoami)
-# Add to input group 
+# Add to input group
 sudo usermod -aG input "$user"
 echo -e "${green}Successfully added $user to 'input' group.${nc}"
 sleep 0.5
@@ -206,7 +236,7 @@ else
     # Remove trailing slash if present for consistency
     final_wall_path="${user_wall_path%/}"
     # Add trailing slash back
-    final_wall_path="$final_wall_path/"    
+    final_wall_path="$final_wall_path/"
     if [[ ! -d "$final_wall_path" ]]; then
         echo -e "${red}Warning: Directory does not exist!${nc} Setting to default to prevent errors."
         final_wall_path="$default_path"
@@ -230,67 +260,66 @@ sleep 1
 
 # Generate Desktop Menu
 generate_menu() {
-echo "-------------------------------------------------"
-echo -e "${yellow}Generating Desktop Menu...${nc}"
-bash "$HOME/.config/labwc/menu-generator.sh"
+    echo "-------------------------------------------------"
+    echo -e "${yellow}Generating Desktop Menu...${nc}"
+    bash "$HOME/.config/labwc/menu-generator.sh"
 }
 
 # Background Services
 background_services() {
-echo "-------------------------------------------------"
-echo -e "${yellow}Starting Background Services...${nc}"
-sleep 0.5   
-echo "-------------------------------------------------"
-echo -e "${red} killing existing instances of swww-daemon, dunst and waybar...${nc}"
-killall -q -w swww-daemon dunst waybar
-# Run swww-daemon, dunst and waybar
-sleep 0.5
-echo -e "${yellow}Initializing swww-daemon, notification and waybar...${nc}"
-sleep 0.5
-swww-daemon > /dev/null 2>&1 &
-echo -e "Started ${green}swww-daemon${nc}"
-sleep 0.5
-dunst > /dev/null 2>&1 &
-echo -e "Started ${green}dunst${nc}"
-sleep 0.5
-waybar > /dev/null 2>&1 &
-echo -e "Started ${green}waybar${nc}"
-sleep 1
+    echo "-------------------------------------------------"
+    echo -e "${yellow}Starting Background Services...${nc}"
+    sleep 0.5
+    echo "-------------------------------------------------"
+    echo -e "${red} killing existing instances of swww-daemon, dunst and waybar...${nc}"
+    killall -q -w swww-daemon dunst waybar
+    # Run swww-daemon, dunst and waybar
+    sleep 0.5
+    echo -e "${yellow}Initializing swww-daemon, notification and waybar...${nc}"
+    sleep 0.5
+    swww-daemon >/dev/null 2>&1 &
+    echo -e "Started ${green}swww-daemon${nc}"
+    sleep 0.5
+    dunst >/dev/null 2>&1 &
+    echo -e "Started ${green}dunst${nc}"
+    sleep 0.5
+    waybar >/dev/null 2>&1 &
+    echo -e "Started ${green}waybar${nc}"
+    sleep 1
 
-# Device plugged audio
-echo "-------------------------------------------------"
-echo -e "${yellow}Starting Device Monitor in background...${nc}"
-bash ~/.config/labwc/device-monitor.sh >/dev/null 2>&1 &
-sleep 1
-# Idle device manager
-echo "-------------------------------------------------"
-echo -e "${yellow}Setting up Swayidle and Hyprlock...${nc}"
-swayidle -w \
-    timeout 300 "~/.config/labwc/idle/brightness_ctrl.sh --fade-out" \
-    resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
-    timeout 600 "loginctl lock-session" \
-    timeout 1800 "systemctl suspend" \
-    lock "~/.config/labwc/idle/lock_ctrl.sh" \
-    before-sleep "~/.config/labwc/idle/sleep_ctrl.sh" \
-    after-resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
-    > "$HOME/.config/labwc/idle/idle.log" 2>&1 &
+    # Device plugged audio
+    echo "-------------------------------------------------"
+    echo -e "${yellow}Starting Device Monitor in background...${nc}"
+    bash ~/.config/labwc/device-monitor.sh >/dev/null 2>&1 &
+    sleep 1
+    # Idle device manager
+    echo "-------------------------------------------------"
+    echo -e "${yellow}Setting up Swayidle and Hyprlock...${nc}"
+    swayidle -w \
+        timeout 300 "~/.config/labwc/idle/brightness_ctrl.sh --fade-out" \
+        resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
+        timeout 600 "loginctl lock-session" \
+        timeout 1800 "systemctl suspend" \
+        lock "~/.config/labwc/idle/lock_ctrl.sh" \
+        before-sleep "~/.config/labwc/idle/sleep_ctrl.sh" \
+        after-resume "~/.config/labwc/idle/brightness_ctrl.sh --fade-in" \
+        >"$HOME/.config/labwc/idle/idle.log" 2>&1 &
 }
 
-
 # Check if labwc is running
-if pgrep -x "labwc" > /dev/null; then
-    echo -e "${green}labwc Session Detected${nc}"   
+if pgrep -x "labwc" >/dev/null; then
+    echo -e "${green}labwc Session Detected${nc}"
     echo -e "${yellow}Refreshing Desktop...${nc}"
     background_services
     sleep 1
 else
     generate_menu
     echo -e "${green}Setup Complete Enjoy....${nc}"
-    exit 0      
+    exit 0
 fi
 
 # Generate Desktop Menu
-generate_menu  
+generate_menu
 
 # Set Desktop Wallpaper
 echo "-------------------------------------------------"
@@ -320,7 +349,7 @@ read -p "Do you want to exit labwc now? (y/n): " exit_choice
 if [[ "$exit_choice" == "y" || "$exit_choice" == "Y" ]]; then
     echo -e "${red}Exiting labwc...${nc}"
     sleep 5
-    labwc --exit 2>/dev/null 
+    labwc --exit 2>/dev/null
 else
     echo -e "${green}Installation finished. Please restart your session manually later.${nc}"
 fi

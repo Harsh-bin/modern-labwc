@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
 	show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -15,7 +18,7 @@ window {
     width:                       300px;
     border-radius:               8px;
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     padding:                     10px;
     background-color:            @background;
     children:                    [ "mainbox" ];
@@ -47,14 +50,15 @@ listview {
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
-    spacing:                     8px;
-    padding:                     20px;
+    spacing:                     0px;
+    padding:                     8px;
+    border-radius:               8px;    
     background-color:            @background-alt;
-    border-radius:               8px; 
     scrollbar:                   true;
 }
 
 scrollbar {
+    margin: 			         0px 0px 0px 2px;
     handle-width:                3px ;
     handle-color:                @foreground;
     background-color:            @background-alt;
@@ -62,23 +66,24 @@ scrollbar {
 
 /*****----- Elements -----*****/
 element {
-    padding:                     10px;
-    border-radius:               8px;
+    padding:                     5px;
+    border-radius:               8px 0px 0px 8px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 
 element-text {
-    background-color:            inherit;
-    text-color:                  inherit;
+    padding:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
     horizontal-align:            0.5;
     vertical-align:              0.5;
 }
 
-element selected {
-    background-color:            @selected;
-    text-color:                  @background;
+element.selected  {
+    background-color:            @hover;
+    text-color:                  @foreground;
 }
 
 inputbar {

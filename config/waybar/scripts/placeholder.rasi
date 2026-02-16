@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -15,7 +18,7 @@ window {
     width:                       350px;
     background-color:            @background;
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     border-radius:               8px;
     padding: 			 15px;
     children:                    [ "message", "inputbar" ];
@@ -57,6 +60,6 @@ entry {
     horizontal-align:            0.5;
     border:                      1px;
     border-radius:               8px;
-    border-color:                @foreground;
+    border-color:                @hover;
     padding:                     10px;
 }

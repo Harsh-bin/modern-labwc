@@ -8,9 +8,9 @@
     vertical_alignment = "center"
     ellipsize = "middle"
     offset = (30,30)
-    padding = 15
-    horizontal_padding = 10
-    text_icon_padding = 15
+    padding = 16   
+    horizontal_padding = 16
+    text_icon_padding = 16
     icon_position = "left"
     min_icon_size = 64
     max_icon_size = 64
@@ -23,17 +23,17 @@
     progress_bar_max_width = 400
     separator_height = 2
     frame_width = 1
-    frame_color = "{{colors.primary.default.hex}}"
+    frame_color = "{{colors.primary.default.hex}}33"
     separator_color = "{{colors.primary.default.hex}}"
     corner_radius = 12
-    gap_size = 8
-    line_height = 0
+    gap_size = 10
+    line_height = 4
     notification_limit = 0
     idle_threshold = 120
     history_length = 20
     show_age_threshold = 60
     markup = "full"
-    font = "Inter 10"
+    font = "Inter 13px"
     format = "<b>%s</b>\n%b"
     word_wrap = "yes"
     sort = "yes"
@@ -49,8 +49,8 @@
     force_xwayland = false
     force_xinerama = false
     mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_middle_click = do_action, close_all
+    mouse_right_click = do_action
 
 [experimental]
     per_monitor_dpi = false
@@ -59,16 +59,16 @@
     timeout = 3
     background = "{{colors.surface.default.hex}}"
     foreground = "{{colors.on_surface.default.hex}}"
-    highlight = "{{colors.primary_container.default.hex}}"
+    highlight = "{{colors.primary.default.hex}}"
 [urgency_normal]
     timeout = 6
     background = "{{colors.surface.default.hex}}"
     foreground = "{{colors.on_surface.default.hex}}"
-    highlight = "{{colors.primary_container.default.hex}}"
+    highlight = "{{colors.primary.default.hex}}"
 [urgency_critical]
     timeout = 0
     background = "{{colors.surface.default.hex}}"
-    foreground = "{{colors.on_surface.default.hex}}"
+    foreground = "{{colors.error.default.hex}}"
     highlight = "{{colors.error.default.hex}}"
 
 

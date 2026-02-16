@@ -11,7 +11,7 @@ output_path = '~/.config/rofi/colors/wallpaper.rasi'
 [templates.labwc]
 input_path = '~/.config/matugen/templates/labwc.conf'
 output_path = '~/.config/labwc/colors/wallpaper.color'
-post_hook = 'labwc --reconfigure'
+post_hook = 'pgrep -x labwc > /dev/null && labwc --reconfigure'
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
@@ -25,10 +25,14 @@ output_path = '~/.config/gtk-4.0/colors/wallpaper.css'
 input_path = '~/.config/matugen/templates/qtct-colors.conf'
 output_path = '~/.config/qt5ct/colors/matugen.conf'
 
-[templates.dunst]
-input_path = '~/.config/matugen/templates/dunstrc-colors.txt'
-output_path = '~/.config/dunst/dunstrc'
-post_hook = 'dunstctl reload'
+#[templates.dunst]
+#input_path = '~/.config/matugen/templates/dunstrc-colors.txt'
+#output_path = '~/.config/dunst/dunstrc'
+
+[templates.swaync]
+input_path = '~/.config/matugen/templates/swaync.css'
+output_path = '~/.config/swaync/colors/wallpaper.css'
+post_hook = 'pgrep -x swaync > /dev/null && swaync-client -rs'
 
 [templates.alacritty]
 input_path = '~/.config/matugen/templates/alacritty.toml'

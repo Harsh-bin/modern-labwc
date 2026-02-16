@@ -1,7 +1,10 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 true;
-    drun-display-format:        "{icon}"; /* Only show icons */
+    drun-display-format:        "{icon}";  
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -15,12 +18,12 @@ configuration {
 /*****----- Main Window -----*****/
 window {
     background-color:            @background;
-    width:                       85%;
+    width:                       90%;
     location:                    center;
     anchor:                      center;
     padding:                     25px;
-    border:                      2px;
-    border-color:                @selected;
+    border:                      1px;
+    border-color:                @hover;
 }
 
 /*****----- Main Layout -----*****/
@@ -37,6 +40,7 @@ message {
     background-color:            inherit;
 }
 textbox {
+    font:                        "JetBrains Mono Nerd Font 12";
     background-color:            inherit;
     text-color:                  @foreground;
     vertical-align:              0.5;
@@ -58,20 +62,19 @@ listview {
 /*****----- Element Styling (Each Thumbnail) -----*****/
 element {
     orientation:                 vertical;
-    padding:                     15px;
+    padding:                     8px;
     background-color:            @background-alt;
     cursor:                      pointer;
 }
 element selected {
-    background-color:            @selected;
+    background-color:            @hover;
 }
 element-icon {
-    size:                        160px; /* Large thumbnail size */
+    size:                        180px; 
     background-color:            transparent;
     border-radius:               8px;
 }
 
-/* This section completely hides the text labels below the thumbnails */
 element-text {
     font:                        "sans 0";
     background-color:            transparent;

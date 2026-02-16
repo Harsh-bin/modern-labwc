@@ -7,10 +7,11 @@
  **/
 
 * {
-    background:     #002B36FF;
-    background-alt: #073642FF;
-    foreground:     #EEE8D5FF;
-    selected:       #268BD2FF;
-    active:         #859900FF;
-    urgent:         #DC322FFF;
+    background:     rgba(0, 43, 54, 1.0);
+    background-alt: rgba(7, 54, 66, 1.0);
+    foreground:     rgba(238, 232, 213, 1.0);
+    selected:       rgba(38, 139, 210, 1.0);
+    hover:          rgba(38, 139, 210, 0.21);
+    active:         rgba(133, 153, 0, 1.0);
+    urgent:         rgba(220, 50, 47, 1.0);
 }

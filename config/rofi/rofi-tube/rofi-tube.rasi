@@ -1,0 +1,131 @@
+/*****----- Configuration -----*****/
+configuration {
+    modi:                       "drun";
+    show-icons:                 true;
+    drun-display-format:        "{name}";
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    width:                       100%;
+    height:                      100%;
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;    
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     5px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @hover;
+    background-color:            @background;
+    cursor:                      "default";
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Message  -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px solid;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+textbox {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    placeholder-color:           @foreground;
+    blink:                       true;
+    markup:                      true;
+    font:                        "Inter 14";
+}
+
+/*****----- Listview (Grid of Thumbnails) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     4;
+    lines:                       2;
+    cycle:                       false;
+    dynamic:                     true;
+    scrollbar:                   true;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                false;
+    fixed-columns:               true;
+    spacing:                     15px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Scrollbar -----*****/
+scrollbar {
+    handle-width:                4px;
+    handle-color:                @selected;
+    border-radius:               4px;
+    background-color:            @background-alt;
+    margin:                      0px;
+}
+
+/*****----- Elements (The Cards) -----*****/
+element {
+    enabled:                     true;
+    orientation:                 vertical;
+    cursor:                      pointer;
+    spacing:                     5px;
+    padding:                     0px;    
+    border-radius:               12px;
+    border:                      0px solid;
+    border-color:                @selected;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+element selected {
+    background-color:            @hover;
+    text-color:                  @foreground;
+}
+
+/*****----- Element Image (Thumbnail) -----*****/
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    size:                        300px;
+    border-radius:               12px;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}
+
+/*****----- Element Text (Title) -----*****/
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;    
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     0px 0px 5px 0px;
+}

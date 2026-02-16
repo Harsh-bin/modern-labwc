@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
 	show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -15,7 +18,7 @@ window {
     width:                       350px;
     border-radius:               8px;
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     padding:                     10px;
     background-color:            @background;
     children:                    [ "mainbox" ];
@@ -63,15 +66,15 @@ element {
 }
 
 element-text {
-    background-color:            inherit;
-    text-color:                  inherit;
+    background-color:            transparent;
+    text-color:                  @foreground;
     horizontal-align:            0.5;
     vertical-align:              0.5;
 }
 
-element selected {
-    background-color:            @selected;
-    text-color:                  @background;
+element.selected  {
+    background-color:            @hover;
+    text-color:                  @foreground;
 }
 
 inputbar {

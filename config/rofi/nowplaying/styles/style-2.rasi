@@ -1,0 +1,133 @@
+/******--- configuration --*****/
+
+configuration {
+    show-icons:                 false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+@import "~/.config/rofi/shared/colors.rasi"
+ 
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    northeast;
+    anchor:                      center;
+    fullscreen:                  false;   
+    width:                       500px;
+    height:                      360px;
+    x-offset:                    -40px;
+    y-offset:                    5px;
+    enabled:                     true;
+    cursor:                      "default";
+    background-image:            url("~/.config/rofi/nowplaying/album_art.png", width);
+    background-color:            @background; 
+    border:                      1px;
+    border-color:                @hover;
+    border-radius:               8px;
+    padding:                     0px;
+}
+
+mainbox {
+    background-color:            transparent;
+    spacing:                     20px;
+    background-image:      linear-gradient(135deg, rgba(255,255,255,70%), rgba(245,245,245,85%), rgba(255,255,255,90%));
+    orientation:                 vertical;
+    children:                    [ "top-message", "middle-wrapper", "listview" ];
+}
+
+top-message {
+    enabled:                     true;
+    padding:                     15px 0px 0px 0px;
+    background-color:            transparent;
+    children:                    [ "textbox-msg" ];
+    expand:                      false;
+}
+
+textbox-msg {
+    expand: true;
+    background-color:            transparent;
+    text-color:                  #000000;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    str:                         "  Now Playing"; 
+    font:                        "JetBrains Mono Nerd Font 14";
+}
+
+middle-wrapper {
+    enabled:                     true;
+    orientation:                 horizontal;
+    padding:                     0px 15px 15px 15px;
+    spacing:                     20px;
+    background-color:            transparent;
+    expand:                      true; 
+    children:                    [ "album-art", "custom-text-box" ];
+}
+
+album-art {
+    enabled:                     true;
+    width:                       170px; 
+    height:                      170px; 
+    background-color:            @background-alt;
+    background-image:            url("~/.config/rofi/nowplaying/album_art.png", height);
+    border-radius:               12px;
+    expand:                      false; 
+}
+
+custom-text-box {
+    enabled:                     true;
+    expand:                      true;
+    padding:                     20px;
+    background-color:     rgba(255, 255, 255, 0.6);  
+    border-radius:               12px;
+    children:                    [ "textbox-custom" ];
+}
+
+textbox-custom {
+    background-color:            transparent;
+    text-color:                  #000000;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    markup:                      true; 
+    font:                        "JetBrains Mono Nerd Font 12";
+    str:                         "Loading...";
+}
+
+/*****-----(Buttons) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       1;
+    dynamic:                     true;
+    reverse:                     false;  
+    padding:                     0px 15px 15px 15px;  
+    spacing:                     15px;
+    background-color:            transparent;
+    cursor:                      "default";
+    expand:                      false; 
+}
+
+element {
+    enabled:                     true;
+    padding:                     5px;
+    border-radius:               100%; 
+    cursor:                      pointer;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+}
+
+element selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    font:                        "JetBrains Mono Nerd Font 16";
+}

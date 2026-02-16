@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir="$HOME/.config/rofi/launchers/"
-theme='style-10'
+theme='style-6'
 
 ## Run
 rofi \

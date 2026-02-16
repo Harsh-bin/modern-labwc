@@ -25,6 +25,9 @@
 
 
     <!-- Key bindings -->
+    <!-- W is the Super key (windows), A is the Alt key, S is the Shift key -->
+    <!-- s and S are different, s is a alphabetic character -->
+
     <keyboard>
         <default />
         <keybind key="W-Return">
@@ -33,15 +36,42 @@
         <keybind key="f11">
             <action name="ToggleFullscreen" />
         </keybind>
-        <keybind key="W-s">
-            <action name="Execute" command="sh -c '~/.config/rofi/screen-tool/screen-tool.sh'" />
+        <!-- Rofi app launcher -->
+        <keybind key="W-d">
+            <action name="Execute" command="sh -c 'killall rofi || ~/.config/rofi/launchers/launcher.sh'" />
         </keybind>
+        <!-- customize desktop -->
+        <keybind key="W-c">
+            <action name="Execute" command="sh -c 'killall rofi || ~/.config/waybar/scripts/customize.sh'" />
+        </keybind>
+        <!-- Wallpaper -->
+        <keybind key="W-b">
+            <action name="Execute" command="sh -c 'killall rofi || ~/.config/rofi/wallselect/wallselect.sh'" />
+        </keybind>
+        <!-- power menu -->
+        <keybind key="W-Delete">
+            <action name="Execute" command="sh -c 'killall rofi || ~/.config/rofi/powermenu/powermenu.sh'" />
+        </keybind>
+        <!-- generate apps menu -->
+        <keybind key="W-g">
+            <action name="Execute" command="sh -c 'killall rofi || ~/.config/labwc/menu-generator.sh'" />
+        </keybind>
+        <!-- screenshot tool -->
+        <keybind key="W-s">
+            <action name="Execute" command="sh -c 'killall rofi || ~/.config/rofi/screen-tool/screen-tool.sh'" />
+        </keybind>   
+        <!-- screenshot tool --> 
+        <keybind key="W-y">
+            <action name="Execute" command="sh -c 'killall rofi || python3 ~/.config/rofi/rofi-tube/rofi-tube.py'" />
+        </keybind>	    
+        <!-- Lock screen -->
         <keybind key="W-l">
             <action name="Execute" command="loginctl lock-session" />
         </keybind>
-        <keybind key="W-c">
+        <!-- Reload labwc config -->
+        <keybind key="W-r">
             <action name="Reconfigure" />
-        </keybind>
+        </keybind>                
         <keybind key="A-Tab">
             <action name="NextWindow" />
         </keybind>
@@ -87,9 +117,29 @@
         <keybind key="W-Down">
             <action name="SnapToEdge" direction="down" />
         </keybind>
+
+        <!-- You Change 5+, 5- to any number e.g. 10+, 10- for both volume and brightness -->
+        <!-- Volume/microphone Control -->
+        <keybind key="XF86AudioRaiseVolume">
+            <action name="Execute" command="sh -c '~/.config/waybar/scripts/volume_ctrl.sh 5+'" />
+        </keybind>
+        <keybind key="XF86AudioLowerVolume">
+            <action name="Execute" command="sh -c '~/.config/waybar/scripts/volume_ctrl.sh 5-'" />
+        </keybind>
+        <keybind key="XF86AudioMute">
+            <action name="Execute" command="sh -c '~/.config/waybar/scripts/volume_ctrl.sh --toggle-mute speaker'" />
+        </keybind>
+        <keybind key="XF86AudioMicMute">
+            <action name="Execute" command="sh -c '~/.config/waybar/scripts/volume_ctrl.sh --toggle-mute microphone'" />
+        </keybind>
+        <!-- Brightness Control -->
+        <keybind key="XF86MonBrightnessUp">
+            <action name="Execute" command="sh -c '~/.config/waybar/scripts/brightness_ctrl.sh 5+'" />
+        </keybind>
+        <keybind key="XF86MonBrightnessDown">
+            <action name="Execute" command="sh -c '~/.config/waybar/scripts/brightness_ctrl.sh 5-'" />
+        </keybind>
     </keyboard>
-
-
     <!-- mouse binding -->
     <mouse>
         <default />
@@ -114,8 +164,6 @@
             <name>WS 4</name>
         </names>
     </desktops>
-
-
     <libinput>
         <!-- TOUCHPAD: laptop trackpads -->
         <device category="touchpad">
@@ -140,8 +188,6 @@
             <leftHanded>no</leftHanded>
         </device>
     </libinput>
-
-
     <!--windows rule -->
     <windowRules>
         <windowRule title="Attention">

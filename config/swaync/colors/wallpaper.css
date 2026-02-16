@@ -1,0 +1,31 @@
+:root {
+    /* --- Static Layout & Transitions --- */
+    --ui-radius: 12px;
+    --image-radius: 8px;
+    --button-radius: 99px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* --- Base Colors --- */
+    --background-main: #fff9ee;
+    --background-secondary: #f4eddf;
+    --border-color: #7c7767;
+
+    /* --- Text Colors --- */
+    --text-color-primary: #1e1b13;
+    --text-color-primary-rgb: rgb(30, 27, 19); 
+    --text-color-secondary: #4b4739;
+
+    /* --- Primary Accent (Switches & Main Buttons) --- */
+    --button-background: #6e5d0e;
+    --text-color-on-accent: #ffffff;
+
+    /* --- Secondary Actions (Notification Buttons) --- */
+    --button-secondary-bg: #eee2bc;
+    --button-secondary-text: #211b04;
+
+    /* --- Critical / Danger State --- */
+    --background-danger: #ba1a1a;
+    --text-color-danger: #410002;
+    --button-danger-bg: #ffdad6;
+    --button-danger-text: #ffffff;
+}

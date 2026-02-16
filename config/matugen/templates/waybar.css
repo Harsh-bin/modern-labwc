@@ -2,12 +2,13 @@
 
 @define-color bar_bg {{colors.surface.default.hex}};
 @define-color bar_fg {{colors.on_surface.default.hex}};
-@define-color module_bg {{colors.surface_container.default.hex}}; 
+@define-color module_bg alpha({{colors.surface_container.default.hex}}, 0.72); 
 @define-color module_fg @bar_fg;
-@define-color hover_bg {{colors.primary.default.hex}};
+@define-color hover_bg alpha({{colors.primary.default.hex}}, 0.92);
 @define-color hover_fg {{colors.on_primary.default.hex}};
 @define-color border_color {{colors.outline.default.hex}};
-@define-color launcher @hover_bg;
-@define-color special {{colors.tertiary_container.default.hex}};
+@define-color special alpha({{colors.tertiary_container.default.hex}}, 0.92);
 @define-color special_fg @module_fg;
 @define-color power {{colors.error.default.hex}};
+@define-color primary {{colors.primary.default.hex}};
+@define-color tray alpha({{colors.tertiary_container.default.hex}}, 0.72);

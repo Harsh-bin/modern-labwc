@@ -1,0 +1,77 @@
+{
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "ignore-gtk-theme": false,
+    "positionX": "right",
+    "positionY": "top",
+    "layer": "overlay",
+    "control-center-layer": "top",
+    "layer-shell": true,
+    "layer-shell-cover-screen": true,
+    "cssPriority": "user",
+    "control-center-margin-top": 10,
+    "control-center-margin-bottom": 10,
+    "control-center-margin-right": 10,
+    "control-center-margin-left": 10,
+    "notification-2fa-action": true,
+    "notification-inline-replies": false,
+    "notification-body-image-height": 100,
+    "notification-body-image-width": 200,
+    "timeout": 10,
+    "timeout-low": 5,
+    "timeout-critical": 0,
+    "fit-to-screen": false,
+    "relative-timestamps": true,
+    "control-center-width": 400,
+    "control-center-height": 700,
+    "notification-window-width": 400,
+    "keyboard-shortcuts": true,
+    "notification-grouping": true,
+    "image-visibility": "when-available",
+    "transition-time": 200,
+    "hide-on-clear": false,
+    "hide-on-action": true,
+    "text-empty": "No Notifications",
+    "script-fail-notify": true,
+    "widgets": [
+        "dnd",
+        "mpris",
+        "notifications"
+    ],
+    "widget-config":
+    {
+        "mpris":
+        {
+            "blacklist": [],
+            "autohide": false,
+            "show-album-art": "always",
+            "loop-carousel": false
+        },
+        "dnd":
+        {
+            "text": "󰂛\u3000Do Not Disturb"
+        },
+        "notifications":
+        {
+            "vexpand": true
+        },
+        "title":
+        {
+            "text": "Notification Center",
+            "clear-all-button": true,
+            "button-text": "󰃢\u3000Clear All"
+        },
+        "buttons-grid":
+        {
+            "buttons-per-row": 2,
+            "actions": [
+            {
+                "label": "Button 1",
+                "command": "echo 'Button 1 pressed'"
+            },
+            {
+                "label": "Button 2",
+                "command": "echo 'Button 2 pressed'"
+            }]
+        }        
+    }
+}

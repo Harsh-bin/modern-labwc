@@ -1,5 +1,5 @@
 border.width: 1
-border.color: #62aeef80
+border.color: #62aeef33
 padding.height: 4
 corner.radius: 0
 window.titlebar.padding.height: 2
@@ -17,7 +17,7 @@ menu.items.text.color: #ffffff
 menu.items.active.bg.color: #62aeef
 menu.items.active.text.color: #000000
 menu.border.width: 1
-menu.border.color: #62aeef90
+menu.border.color: #62aeef33
 menu.separator.width: 1
 menu.separator.padding.width: 6
 menu.separator.padding.height: 3

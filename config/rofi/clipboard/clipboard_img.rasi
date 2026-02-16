@@ -1,6 +1,9 @@
 /*****----- Configuration -----*****/
 configuration {
 	show-icons: 		true;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -22,7 +25,7 @@ window {
     enabled:                     true;
     cursor:                      "default";
     border:                      1px;
-    border-color:                @selected;
+    border-color:                @hover;
     background-color:            @background;
     padding:                     10px;
 }
@@ -52,6 +55,13 @@ listview {
     margin: 			         0px;
     background-color:            transparent;
     cursor:                      "default";
+    scrollbar:                   true;
+}
+scrollbar {
+    handle-width:                3px ;
+    margin: 			         0px 0px 0px 2px;
+    handle-color:                @foreground;
+    background-color:            @background-alt;
 }
 
 /*****----- Elements -----*****/
@@ -64,8 +74,8 @@ element {
 }
 
 element.selected  {
-    background-color:            @selected;
-    text-color:                  @background;
+    background-color:            @hover;
+    text-color:                  @foreground;
 }
 
 element-icon {

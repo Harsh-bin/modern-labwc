@@ -3,8 +3,10 @@
 # Remove 'set -e' so the script doesn't crash if a connection fails initially
 set -u
 
+notify_id=$(if pgrep -x "swaync" >/dev/null; then echo "-h string:x-canonical-private-synchronous:wifimanager"; else echo "-r 3455"; fi)
+
 # Notify user about the script launch
-notify-send "       Checking for Wi-Fi..."
+notify-send $notify_id "       Checking for Wi-Fi..."
 
 # --- Configuration ---
 LIST_THEME="$HOME/.config/rofi/wifi/list.rasi"
@@ -15,7 +17,7 @@ PASSWORD_THEME="$HOME/.config/rofi/wifi/password.rasi"
 # --- Functions ---
 
 enable_wifi_menu() {
-    echo -e "   Enable Wi-Fi" | rofi -dmenu -theme "$ENABLE_THEME" || true    
+    echo -e "   Enable Wi-Fi" | rofi -dmenu -theme "$ENABLE_THEME" || true
 }
 
 prompt_ssid() {
@@ -38,32 +40,32 @@ list_wifi_menu() {
 connect_secure_loop() {
     local target_ssid="$1"
     local error_output=""
-    
+
     while true; do
         local pass
         pass=$(prompt_password "$error_output")
-        
+
         # Exit if cancelled
         if [[ -z "$pass" ]]; then
             exit 0
         fi
 
-        notify-send "       Connecting to \"$target_ssid\""
+        notify-send $notify_id "       Connecting to \"$target_ssid\""
 
         # Delete the old connection profile to ensure a fresh start.
-        nmcli connection delete id "$target_ssid" &> /dev/null
+        nmcli connection delete id "$target_ssid" &>/dev/null
 
         # Try to connect with the new password
         local output
         output=$(nmcli dev wifi connect "$target_ssid" password "$pass" 2>&1)
 
         if [[ $? -eq 0 ]]; then
-            notify-send "       Connected to \"$target_ssid\""
+            notify-send $notify_id "       Connected to \"$target_ssid\""
             break
         else
             # Capture error for the next retry prompt
             error_output=$(echo "$output" | sed 's/Error: //')
-            notify-send "       Connection Failed" "Retrying..."
+            notify-send $notify_id "       Connection Failed" "Retrying..."
         fi
     done
 }
@@ -76,8 +78,8 @@ wifi_status=$(nmcli -t -f WIFI general | tail -n1)
 if [[ "$wifi_status" == "disabled" ]]; then
     choice=$(enable_wifi_menu)
     [[ -z "$choice" ]] && exit 0
-  	nmcli radio wifi on
-    notify-send " 󱚽      Wi-Fi Enabled..."
+    nmcli radio wifi on
+    notify-send $notify_id " 󱚽      Wi-Fi Enabled..."
     exit 0
 fi
 
@@ -109,61 +111,61 @@ ssid_name=$(echo "$choice" | sed 's/^[^ ]*   //')
 
 case "$raw_choice" in
 
-    *"Disable Wi-Fi"*)
-        nmcli radio wifi off
-        notify-send " 󱚼      Wi-Fi Disabled..."
-        ;;
+*"Disable Wi-Fi"*)
+    nmcli radio wifi off
+    notify-send $notify_id " 󱚼      Wi-Fi Disabled..."
+    ;;
 
-    *"Manual Setup"*)
-        manual_ssid=$(prompt_ssid)
-        [[ -z "$manual_ssid" ]] && exit 0
-        manual_password=$(prompt_password)
-        nmcli dev wifi connect "$manual_ssid" hidden yes password "$manual_password"
-        ;;
+*"Manual Setup"*)
+    manual_ssid=$(prompt_ssid)
+    [[ -z "$manual_ssid" ]] && exit 0
+    manual_password=$(prompt_password)
+    nmcli dev wifi connect "$manual_ssid" hidden yes password "$manual_password"
+    ;;
 
-    *"Connected to"*)
-        # Disconnects from the wifi network
-        nmcli connection down "$connected_ssid"
-        notify-send " 󱛅      Disconnected from \"$connected_ssid\""
-        ;;
-    
-    *"Wi-Fi not connected"*)
-        exit 0
-        ;;
+*"Connected to"*)
+    # Disconnects from the wifi network
+    nmcli connection down "$connected_ssid"
+    notify-send $notify_id " 󱛅      Disconnected from \"$connected_ssid\""
+    ;;
 
-    *)
-        # === CONNECTION LOGIC ===
+*"Wi-Fi not connected"*)
+    exit 0
+    ;;
 
-        saved_profile_exists=false
-        if nmcli -t -f NAME connection show | grep -q -x "$ssid_name"; then
-            saved_profile_exists=true
-        fi
+*)
+    # === CONNECTION LOGIC ===
 
-        # Try saved profile first (Auto-Connect)
-        if [[ "$saved_profile_exists" == "true" ]]; then
-            notify-send "       Connecting to saved network: \"$ssid_name\""
-            
-            if nmcli dev wifi connect "$ssid_name" > /dev/null 2>&1; then
-                notify-send "       Connected to \"$ssid_name\""
-                exit 0
-            else
-                notify-send "       Login failed. Retrying with password..."
-                # If auto-connect fails, we assume the saved password is wrong.
-            fi
-        fi
+    saved_profile_exists=false
+    if nmcli -t -f NAME connection show | grep -q -x "$ssid_name"; then
+        saved_profile_exists=true
+    fi
 
-        # 2. Handle Security
-        if [[ "$raw_choice" == *""* ]]; then
-            # Enter the password loop (handles new connections and failed saved ones)
-            connect_secure_loop "$ssid_name"
+    # Try saved profile first (Auto-Connect)
+    if [[ "$saved_profile_exists" == "true" ]]; then
+        notify-send $notify_id "       Connecting to saved network: \"$ssid_name\""
+
+        if nmcli dev wifi connect "$ssid_name" >/dev/null 2>&1; then
+            notify-send $notify_id "       Connected to \"$ssid_name\""
+            exit 0
         else
-            # Open Network
-            notify-send "       Connecting to \"$ssid_name\""
-            if nmcli dev wifi connect "$ssid_name" > /dev/null 2>&1; then
-                 notify-send "       Connected to \"$ssid_name\""
-            else
-                 notify-send "       Connection Failed..."
-            fi
+            notify-send $notify_id "       Login failed. Retrying with password..."
+            # If auto-connect fails, we assume the saved password is wrong.
         fi
-        ;;
+    fi
+
+    # 2. Handle Security
+    if [[ "$raw_choice" == *""* ]]; then
+        # Enter the password loop (handles new connections and failed saved ones)
+        connect_secure_loop "$ssid_name"
+    else
+        # Open Network
+        notify-send $notify_id "       Connecting to \"$ssid_name\""
+        if nmcli dev wifi connect "$ssid_name" >/dev/null 2>&1; then
+            notify-send $notify_id "       Connected to \"$ssid_name\""
+        else
+            notify-send $notify_id "       Connection Failed..."
+        fi
+    fi
+    ;;
 esac

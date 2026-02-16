@@ -1,0 +1,93 @@
+/***** Configuration *****/
+
+configuration {
+    show-icons: false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+@import "~/.config/rofi/shared/colors.rasi"
+
+window { 
+    location:                    northeast;
+    width:              550px;
+    x-offset:           -80px;
+    y-offset:                    5px;
+    height:             300px;
+    border-radius:      15px;
+    background-color:   @background;
+    border:             1px;
+    border-color:       @hover;
+    padding:            15px;
+}
+
+mainbox {
+    orientation:        horizontal;  
+    children:           [ "art", "right-col" ];
+    spacing:            20px;
+    background-color:   transparent;
+}
+ 
+art {
+    width:              240px;
+    border-radius:      12px;
+    background-image:   url("~/.config/rofi/nowplaying/album_art.png", height);
+    background-color:   @background-alt;
+}
+ 
+right-col {
+    orientation:        vertical;
+    children:           [ "textbox-custom", "listview" ];
+    background-color:   transparent;
+    expand:             true;
+    spacing:            0px;
+}
+ 
+textbox-custom {
+    expand:             true;
+    vertical-align:     0.5; 
+    horizontal-align:   0.0;
+    markup:             true;
+    font:               "JetBrains Mono Nerd Font 12";
+    text-color:         @foreground;
+    background-color:   transparent;
+    padding:            10px;
+}
+
+/*****-----(Buttons) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       1;
+    dynamic:                     true;
+    reverse:                     false;    
+    spacing:                     15px;
+    background-color:            transparent;
+    cursor:                      "default";
+    expand:                      false; 
+}
+
+element {
+    enabled:                     true;
+    padding:                     5px;
+    border-radius:               12px; 
+    cursor:                      pointer;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+}
+
+element.selected  {
+    background-color:            @hover;
+    text-color:                  @foreground;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    font:                        "JetBrains Mono Nerd Font 16";
+}

@@ -1,0 +1,80 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 true;
+    drun-display-format:        "{icon}";  
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+/*****----- Global Properties -----*****/
+@import                          "~/.config/rofi/shared/colors.rasi"
+@import                          "~/.config/rofi/shared/fonts.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    background-color:            @background;
+    width:                       100%;
+    location:                    center;
+    anchor:                      center;
+    padding:                     25px;
+    border-radius:               0px;
+    border:                      1px;
+    border-color:                @hover;
+}
+
+/*****----- Main Layout -----*****/
+mainbox {
+    background-color:            inherit;
+    spacing:                     25px;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Message -----*****/
+message {
+    padding:                     0px;
+    background-color:            inherit;
+}
+textbox {
+    font:                        "JetBrains Mono Nerd Font 12";
+    background-color:            inherit;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    markup:                      true;
+}
+
+/*****----- List of Thumbnails -----*****/
+listview {
+    columns:                     4;
+    lines:                       1;
+    layout:                      vertical;
+    fixed-columns:               true;
+    fixed-height:                true;
+    spacing:                     inherit; 
+    background-color:            transparent;
+}
+
+/*****----- Element Styling (Each Thumbnail) -----*****/
+element {
+    orientation:                 vertical;
+    padding:                     8px;
+    background-color:            @background-alt;
+    cursor:                      pointer;
+    border-radius:               14px;
+}
+
+element selected {
+    background-color:            @hover;
+}
+element-icon {
+    size:                        300px; 
+    background-color:            transparent;
+}
+
+element-text {
+    font:                        "sans 0";
+    background-color:            transparent;
+    text-color:                  transparent;
+}
