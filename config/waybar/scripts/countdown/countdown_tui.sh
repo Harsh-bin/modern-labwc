@@ -1,6 +1,4 @@
 # this script is sourced by the main countdown.sh
- 
-red="\033[0;31m"
 term_primary="${term_primary:-\033[0;37m}"
 term_secondary="${term_secondary:-\033[0;90m}"
 reset="\033[0m"
@@ -76,45 +74,38 @@ print_aligned_table() {
         return
     fi
  
-    local statuses=$(echo "$raw_data" | cut -f1)
-    local table_content=""
     local header=""
-
+    local table_data=""
     if [[ "$show_id" == "true" ]]; then 
-        table_content=$(echo "$raw_data" | cut -f2-)
-        header="ID\tLABEL\tTARGET\tLEFT"
+        header="HEAD\tID\tLABEL\tTARGET\tLEFT"
+        table_data="$raw_data"
     else 
-        table_content=$(echo "$raw_data" | cut -f3-)
-        header="LABEL\tTARGET\tLEFT"
+        header="HEAD\tLABEL\tTARGET\tLEFT"
+        table_data=$(echo "$raw_data" | cut -f1,3-)
     fi
 
-    local full_content_for_column=$(printf "%s\n%s" "$header" "$table_content")
+    local full_content
+    full_content=$(printf "%s\n%s" "$header" "$table_data")    
     local aligned_table
-    aligned_table=$(echo -e "$full_content_for_column" | column -t -s $'\t')
+    aligned_table=$(echo -e "$full_content" | column -t -s $'\t')
 
-    local line_num=0
     while IFS= read -r line; do
-        if [ "$line_num" -eq 0 ]; then 
-            echo "$line"
-            echo "$line" | sed 's/./-/g'
-        else
-            local current_status
-            current_status=$(echo "$statuses" | sed -n "${line_num}p")
+        read -r status content <<< "$line"
 
-            if [[ "$current_status" == "GAP_LINE" ]]; then
-                echo ""  
-            elif [[ "$current_status" == "1_ACT" ]]; then
-                echo -e "${term_primary}${line}${reset}"
-            elif [[ "$current_status" == "2_EXP" ]]; then
-                echo -e "${red}${line}${reset}"
-            else
-                echo "$line"
-            fi
+        if [[ "$status" == "HEAD" ]]; then
+            echo "$content"
+            echo "$content" | sed 's/./-/g'
+        elif [[ "$status" == "GAP_LINE" ]]; then
+            echo ""  
+        elif [[ "$status" == "1_ACT" ]]; then
+            echo -e "${term_primary}${content}${reset}"
+        elif [[ "$status" == "2_EXP" ]]; then
+            echo -e "${term_secondary}${content}${reset}"
+        else
+            echo "$line"
         fi
-        ((line_num++))
     done <<<"$aligned_table"
 }
-
  
 add_countdown_logic() {
     read -r -p "Label: " new_label
