@@ -2,7 +2,7 @@
 
 # Configuration
 dir="$HOME/.config/waybar/scripts/data_monitor"
-theme_input="$dir/placeholder.rasi"
+theme_input="$dir/placeholder-2.rasi"
 resolved_conf="/etc/systemd/resolved.conf"
 
 # Runs as Root via pkexec
