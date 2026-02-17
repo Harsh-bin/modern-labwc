@@ -19,7 +19,6 @@ If you enjoy this project, consider giving it a star!
 
 ---
 
-- **[Preview](#-preconfigured-themes-20-total)**
 - **[Installation](#installation)**
 - **[Dependencies](#dependencies)**
 - **[Keybindings](#keybindings)**
@@ -86,8 +85,6 @@ If you enjoy this project, consider giving it a star!
 </tr>
 </table>
 
----
-
 <table>
   <tr>
     <td colspan="2" align="center">
@@ -99,8 +96,6 @@ If you enjoy this project, consider giving it a star!
     <td><h6>With Header</h6><img src="https://github.com/user-attachments/assets/e0e9d20a-c171-4701-b7f6-268b733ec2ab" width="100%" alt="launcher9"></td>
   </tr>
 </table>
-
----
 
 ### Rofi Launchers
 
@@ -132,8 +127,6 @@ If you enjoy this project, consider giving it a star!
   </tr>
 </table>
 
----
-
 <table>
   <tr>
     <td colspan="2" align="center">
@@ -157,8 +150,6 @@ If you enjoy this project, consider giving it a star!
     <td><img src="https://github.com/user-attachments/assets/36122913-484f-4e04-bad0-1a1a7c7dd98a" width="100%" alt="pm8"></td>
   </tr>
 </table>
-
----
 
 ## Waybar
 
@@ -210,8 +201,6 @@ If you enjoy this project, consider giving it a star!
     </td>
   </tr>
 </table>
-
----
 
 ### Rofi Applets
 
@@ -280,8 +269,6 @@ If you enjoy this project, consider giving it a star!
   </tr>
 </table>
 
----
-
 ### Hyprlock
 
 <table>
@@ -311,8 +298,6 @@ If you enjoy this project, consider giving it a star!
   </tr>
 </table>
 
----
-
 ### Mpv
 
 <table>
@@ -329,9 +314,10 @@ If you enjoy this project, consider giving it a star!
 
 
 </details>
+
+---
   
 ## Update and Fixes
-
 
 *First of all, scripts are efficent and light they literally use < 0% cpu and With all the daemons and script running at once the ram usage should be under 50-60mb.*
 
@@ -387,7 +373,6 @@ and many more small changes...
  Click Here to View Updates and Changes
 </strong>
 </summary>
-
 
 <table>
   <tr>
@@ -456,7 +441,6 @@ and many more small changes...
     <td><img src="https://github.com/user-attachments/assets/d32f8b0c-cc11-4e2b-bd47-6af8844b626a" alt="style-5" width="100%"></td>
   </tr>
 </table>
-
 
 <table>
   <tr>
@@ -546,9 +530,6 @@ chmod +x setup.sh
 3. Copy fonts to `~/.local/share/`.
 4. Copy Curso theme to `~/.local/share/icons`.
 5. Copy `matugen-labwc` theme folder to `~/.themes`.
-
----
-
 
 ## Dependencies
 
@@ -799,7 +780,7 @@ To change the profile picture (pfp), you must replace the `~/.config/hypr/hyprlo
     Change it to: `path = ~/.config/hypr/hyprlock/user.png`.
 
 ### 8. Use TUI Version of `todo` `countdown` and `clock-calendar`
-Tui version of there scripts exist to use them you have to modify the waybar `config.jsonc` file 
+Tui version of these scripts exist to use them you have to modify the waybar `config.jsonc` file 
 
 **Example**
 ```
@@ -868,9 +849,7 @@ To fix this:
 ### 11. Changing Notification Daemon
 To Change the notification daemon you have to edit the `~/.config/labwc/autostart` file.
 Search the `dunst >/dev/null 2>&1 &` and replace it with `swaync >/dev/null 2>&1 &`
-
---
-
+ 
 <h2>
 <picture>
   <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f91d_1f3fb/512.webp" type="image/webp">
@@ -881,6 +860,9 @@ Search the `dunst >/dev/null 2>&1 &` and replace it with `swaync >/dev/null 2>&1
 I am happy to collaborate! Feel free to contribute to this project in any way you can.
 Whether it's fixing a bug, adding a new feature, or even a small change like enhancing README, every contribution matters and is highly appreciated.
 
+### Credits
+Rofi launcher and powermenu [adi1090x](https://github.com/adi1090x) Matugen [InioX](https://github.com/InioX)
+
 <h4>
 Enjoy your beautifully themed Labwc desktop!
 <picture>
@@ -888,9 +870,5 @@ Enjoy your beautifully themed Labwc desktop!
   <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f389/512.gif" alt="🎉" width="32" height="32">
 </picture>
 </h4>
-
-### Credits
-Rofi launcher and powermenu [adi1090x](https://github.com/adi1090x)
-Matugen [InioX](https://github.com/InioX)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Harsh-bin/modern-labwc&type=Timeline)](https://star-history.com/#Harsh-bin/modern-labw&Timeline)
