@@ -7,12 +7,7 @@ A ready to use configuration for **Labwc** wayland compositor with 19 preconfigu
 
 </div>
 
----
-
 <div align="center">
-
-**[Preview](#-preconfigured-themes-20-total)** • **[Keybindings](#keybindings)** • **[Configuration](#configuration)** • **[Installation](#installation)** 
-
 <h5>
 If you enjoy this project, consider giving it a star!
 <picture>
@@ -20,8 +15,30 @@ If you enjoy this project, consider giving it a star!
   <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="32" height="32">
 </picture>
 </h5>
-
 </div>
+
+---
+
+- **[Preview](#-preconfigured-themes-20-total)**
+- **[Installation](#installation)**
+- **[Dependencies](#dependencies)**
+- **[Keybindings](#keybindings)**
+- **[Configuring shell to use Alarm and Timer script from terminal](#configuration)**
+- **[Configuring](#configuration)**
+  - [1. Keybindings](#1-keybindings)
+  - [2. Mouse & Touchpad Acceleration](#2-mouse--touchpad-acceleration)
+  - [3. Workspaces](#3-workspaces)
+  - [4. Waybar Customization](#4-waybar-customization)
+  - [5. Changing Wallpaper Path](#5-changing-wallpaper-path)
+  - [6. Adding context menu in thunar to easily set wallpaper](#6-adding-context-menu-in-thunar-to-easily-set-wallpaer-by-right-clicking-on-images-or-gifs)
+  - [7. Changing Lockscreen Profile Photo](#7-changing-lockscreen-profile-photo)
+  - [8. Use TUI Version of todo countdown and clock-calendar](#8-use-tui-version-of-todo-countdown-and-clock-calendar)
+  - [9. Locale & Input](#9-locale--input)
+  - [10. Rofi Tube](#10-rofi-tube)
+  - [11. Changing Notification Daemon](#11-changing-notification-daemon)
+- **[Update](#update-and-fixes)**
+
+---
 
 <h2>
 <picture>
@@ -30,7 +47,6 @@ If you enjoy this project, consider giving it a star!
 </picture>
   Features
 </h2>
-
 
 - **Preconfigured Themes** - Preconfigured color schemes for labwc, GTK3, GTK4, Rofi, and waybar.
 - **Wallpaper-Based Color Generation** - Generate themes from wallpapers using Matugen.
@@ -340,7 +356,7 @@ If you enjoy this project, consider giving it a star!
     **Some clarification about this script**
    - I know that yt-dlp is integrated in mpv by default
    - I know you can fetch youtube search from yt-dlp and don't need a youtube scrapper
-   - I used these complex function as 1. Youtube scrapper is super fast it takes few seconds maybe 2-3 (depending on internet speed) whereas yt-dlp can take more than 30sec maybe even more than a minute
+   - I used these complex function as Youtube scrapper is super fast it takes few seconds maybe 2-3 (depending on internet speed) whereas yt-dlp can take more than 30sec maybe even more than a minute
    - Providing a direct link to mpv will generate a very long playlist which is time taking and also useless in my point of view i wanted few items only.
    - One downside of this script is that you can't have an actual playlist in the player and to skip an item you just end the video and it will play next (no previous)
 - `Swaync:` You can use swaync as notification daemon. It will give you buttons in notification and animation.
@@ -391,31 +407,33 @@ and many more small changes...
   </tr>
 </table>
 
-<table> 
+<table width="100%">
   <tr>
-    <td colspan="3" align="center">
+    <td colspan="2" align="center">
       <h4>Clock-Calendar Script</h4>
     </td>
   </tr>
   <tr>
-    <td colspan="3">
-      <img src="https://github.com/user-attachments/assets/97c55f0f-1898-42b1-bd16-6b7db50a883f" alt="img28" width="100%">
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/97c55f0f-1898-42b1-bd16-6b7db50a883f" 
+           width="40%"">
+    </td>
+    <td width="50%">
+      <img src="https://github.com/user-attachments/assets/506e33f9-3a94-49e7-b3c9-d4e1b949b3ee" 
+           width="100%">
     </td>
   </tr>
- 
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/506e33f9-3a94-49e7-b3c9-d4e1b949b3ee" alt="img27" width="100%">
+      <img src="https://github.com/user-attachments/assets/0a554df6-a796-4da1-9131-be0f7cd0de28" 
+           width="100%">
     </td>
     <td>
-      <img src="https://github.com/user-attachments/assets/0a554df6-a796-4da1-9131-be0f7cd0de28" alt="img26" width="100%">
-    </td>
-    <td>
-      <img src="https://github.com/user-attachments/assets/4b59d788-b613-43df-92ee-ea3b70ce127d" alt="img29" width="100%">
+      <img src="https://github.com/user-attachments/assets/4b59d788-b613-43df-92ee-ea3b70ce127d" 
+           width="100%">
     </td>
   </tr>
 </table>
-
 
 <table>
   <tr>
@@ -847,7 +865,7 @@ To fix this:
 
 *IMPORTANT!!! Don't use your google account cookies as it may block your youtube account*
 
-### Changing Notification Daemon
+### 11. Changing Notification Daemon
 To Change the notification daemon you have to edit the `~/.config/labwc/autostart` file.
 Search the `dunst >/dev/null 2>&1 &` and replace it with `swaync >/dev/null 2>&1 &`
 
