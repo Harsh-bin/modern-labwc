@@ -330,23 +330,59 @@ padding: 4px;
 }
  
 .notification.critical .notification-action {
-    background: color-mix(in srgb, var(--button-danger-bg), 30% transparent ); 
+    background: color-mix(in srgb, var(--background-danger), 30% transparent ); 
     border: 1px solid transparent;     
-    color: var(--button-danger-text);
+    color: var(--background-main);
 }
 
 .notification.critical .notification-action:hover {
-    background: color-mix(in srgb, var(--button-danger-bg), 10% transparent ); 
+    background: color-mix(in srgb, var(--background-danger), 10% transparent ); 
     border: 1px solid transparent;
 }
 
 .notification.critical .notification-action label {
-    color: var(--background-danger); 
+    color: var(--background-main); 
 }
 
 .notification.critical .notification-action:hover label {
-    color: var(--text-color-danger); 
+    color: var(--background-main); 
 }
+
+/* --- NOTIFICATION PROGRESS BAR (Volume/Brightness) --- */
+
+/* Container for the progress bar */
+.notification progressbar {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* The background track (empty part of the bar) */
+.notification progressbar trough {
+    background: color-mix(in srgb, var(--text-color-secondary), 80% transparent);
+    border-radius: var(--ui-radius);
+    min-height: 6px; 
+    border: none;
+    box-shadow: none;
+}
+
+/* The fill bar (Standard)  */
+.notification progressbar progress {
+    background: var(--button-background);
+    border-radius: var(--ui-radius);
+    min-height: 6px;
+    border: none;
+    box-shadow: none;
+}
+
+/* The fill bar (Critical) - uses --background-danger */
+.notification.critical progressbar progress {
+    background: var(--background-danger);
+}
+ 
+.notification.critical progressbar trough {
+    background: color-mix(in srgb, var(--background-danger), 80% transparent);
+}
+
 
 /* --- CLOSE BUTTON --- */
 .close-button {
