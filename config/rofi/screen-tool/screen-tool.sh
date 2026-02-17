@@ -109,22 +109,16 @@ screen_record() {
 
         case "$option" in
         "Yes")
-            wf-recorder -g "$region" -c libx264 -p preset=ultrafast -p crf=28 \
-                -p tune=zerolatency --pixel-format yuv420p \
-                --audio="$audio_source" -f "$filename" &>/dev/null &
+            wf-recorder -g "$region" --audio="$audio_source" -r 60 -f "$filename" &>/dev/null &
             # Saves the recording name to a tmp file
             echo "$filename" >"/tmp/recording.name"
             notify-send -t 1500 "Screen Record" "Recording Started with audio..."
-            #wf-recorder -g "$region" -r 60 -f "$filename"
             ;;
         "No")
-            wf-recorder -g "$region" -c libx264 -p preset=ultrafast -p crf=23 \
-                -p tune=zerolatency --pixel-format yuv420p \
-                -f "$filename" &>/dev/null &
+            wf-recorder -g "$region" -r 60 -f "$filename" &>/dev/null &
             # Saves the recording name to a tmp file
             echo "$filename" >"/tmp/recording.name"
             notify-send -t 1500 "Screen Record" "Recording Started without audio..."
-            #wf-recorder -g "$region" -r 60 -f "$filename"
             ;;
         *)
             notify-send "Screen-recording Cancelled..."
